@@ -1,15 +1,11 @@
-import { useState, useEffect } from 'react'
-
 import BudgetBusiness from '../business/budget'
 
-export default function HomeView() {
-  const [initialRender, setInitialRender] = useState<boolean>(true)
-
-  BudgetBusiness({ initialRender })
-  
-  useEffect(() => setInitialRender(false))
+export default function HomeView({ isProduction } : { isProduction: boolean }) {
+  const {
+    authState
+  } = BudgetBusiness({ isProduction })
 
   return (
-    <h1>Home</h1>
+    <h1>Home {authState ? 'Logged' : 'Is Not Logged'}</h1>
   )
 }

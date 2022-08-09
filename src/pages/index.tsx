@@ -1,4 +1,3 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
@@ -6,7 +5,16 @@ const HomeView = dynamic(() => import('../modules/home/view'), {
   ssr: false
 })
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+  const isProduction = process.env.NODE_ENV === 'production'
+  return {
+    props: {
+      isProduction
+    }
+  }
+}
+
+const Home = ({ isProduction } : { isProduction: boolean }) => {
   return (
     <div>
       <Head>
@@ -15,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeView />
+      <HomeView isProduction={isProduction}/>
     </div>
   )
 }
