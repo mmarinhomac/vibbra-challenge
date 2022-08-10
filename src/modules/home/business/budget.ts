@@ -5,13 +5,10 @@ import { selectAuthState, signInAction } from "../../../store/authSlice";
 
 import { getBudgetRequest } from '../../../services/budget'
 
-interface IBudgetBusiness {
-  isProduction: boolean
-}
-
-export default function BudgetBusiness({ isProduction } : IBudgetBusiness) {
+export default function BudgetBusiness() {
   const authState = useSelector(selectAuthState);
   const dispatch = useDispatch();
+  const isProd = process.env.NODE_ENV === 'production'
 
   const [initialRender, setInitialRender] = useState<boolean>(true)
 
@@ -19,7 +16,7 @@ export default function BudgetBusiness({ isProduction } : IBudgetBusiness) {
     // test redux store
     dispatch(signInAction(true))
 
-    const data = await getBudgetRequest({ isProduction })
+    const data = await getBudgetRequest({ isProd })
     console.log('#data', data)
   }
   

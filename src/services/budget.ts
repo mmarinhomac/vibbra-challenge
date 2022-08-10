@@ -4,11 +4,11 @@ const baseURLDev = 'http://localhost:3000/api'
 const baseURLProd = 'https://vibbra-challenge.vercel.app/api'
 
 export const getBudgetRequest = ({
-  isProduction
+  isProd
 } : {
-  isProduction: boolean
+  isProd: boolean
 }) => new Promise((resolve, reject) => {
-  axios.get(!isProduction ? 
+  axios.get(!isProd ? 
     `${baseURLDev}/budget` :
     `${baseURLProd}/budget`)
     .then(({ data }) => resolve(data))

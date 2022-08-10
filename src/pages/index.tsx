@@ -1,20 +1,8 @@
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
 
-const HomeView = dynamic(() => import('../modules/home/view'), {
-  ssr: false
-})
+import HomeView from '../modules/home/view'
 
-export async function getStaticProps() {
-  const isProduction = process.env.NODE_ENV === 'production'
-  return {
-    props: {
-      isProduction
-    }
-  }
-}
-
-const Home = ({ isProduction } : { isProduction: boolean }) => {
+const Home = () => {
   return (
     <div>
       <Head>
@@ -23,7 +11,7 @@ const Home = ({ isProduction } : { isProduction: boolean }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeView isProduction={isProduction}/>
+      <HomeView />
     </div>
   )
 }
