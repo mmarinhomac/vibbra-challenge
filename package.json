@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-icons/all-files": "4.1.0",
     "@reduxjs/toolkit": "1.8.3",
     "axios": "0.27.2",
     "miragejs": "0.1.45",

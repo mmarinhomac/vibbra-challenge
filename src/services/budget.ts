@@ -1,16 +1,7 @@
-import axios from 'axios'
+import api from './index'
 
-const baseURLDev = 'http://localhost:3000/api'
-const baseURLProd = 'https://vibbra-challenge.vercel.app/api'
-
-export const getBudgetRequest = ({
-  isProd
-} : {
-  isProd: boolean
-}) => new Promise((resolve, reject) => {
-  axios.get(!isProd ? 
-    `${baseURLDev}/budget` :
-    `${baseURLProd}/budget`)
+export const getBudgetRequest = () => new Promise((resolve, reject) => {
+  api.get('/budget')
     .then(({ data }) => resolve(data))
     .catch((err) => reject(err));
 })

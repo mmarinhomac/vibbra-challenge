@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import { AuthProvider } from '../modules/auth/context'
+
 import AuthView from '../modules/auth/view'
 
 const Auth = () => {
@@ -9,7 +11,9 @@ const Auth = () => {
         <title>Auth</title>
       </Head>
 
-      <AuthView />
+      <AuthProvider>
+        <AuthView />
+      </AuthProvider>
     </div>
   )
 }

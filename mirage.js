@@ -1,8 +1,9 @@
-import { createServer, Model } from 'miragejs'
+import { createServer, Model, Response } from 'miragejs'
 
 export function makeServer() {
   let server = createServer({
     models: {
+      user: Model,
       budget: Model,
       preference: Model,
       companie: Model,
@@ -13,23 +14,33 @@ export function makeServer() {
 
     seeds(server) {
       server.db.loadData({
+        // System Mock
+        users: [
+          {
+            email: 'srvibbraneo@gmail.com',
+            name: 'Sr. Vibbraneo',
+            cnpj: '18804552000118',
+            companyName: 'Vibbraneo Transportes Ltda',
+            phone: '1137616136',
+            password: '123456',
+          }
+        ],
+
+        // Business Mock
         budgets: [{ maximumBillingLimit: 81000 }],
         preferences: [{ notification: ['email', 'sms'] }],
         companies: [
           {
-            id: 1,
             cnpj: '75.890.985/0001-77',
             name: 'Lara e Márcio Restaurante ME',
             socialReason: 'Lara e Márcio Restaurante ME'
           },
           {
-            id: 2,
             cnpj: '71.170.884/0001-70',
             name: 'Emanuel e Larissa Marcenaria Ltda',
             socialReason: 'Emanuel e Larissa Marcenaria Ltda'
           },
           {
-            id: 3,
             cnpj: '31.303.008/0001-50',
             name: 'Antonio e Antonio Buffet Ltda',
             socialReason: 'Antonio e Antonio Buffet Ltda'
@@ -37,25 +48,21 @@ export function makeServer() {
         ],
         categories: [
           {
-            id: 1,
             name: 'Almoço',
             description: 'Almoço Semana',
             filed: false
           },
           {
-            id: 2,
             name: 'Almoço',
             description: 'Almoço Mês',
             filed: false
           },
           {
-            id: 3,
             name: 'Transporte',
             description: 'Transporte - Uber ou Taxi / Ida e Volta',
             filed: false
           },
           {
-            id: 4,
             name: 'Manutenção',
             description: 'Manuntenção - Avulso',
             filed: false
@@ -113,6 +120,29 @@ export function makeServer() {
 
       this.passthrough(request => {
         if (String(request.url).match('/_next/static')) return true
+      })
+
+      this.post('/auth', (schema, request) => {
+        const email = request.requestBody.email
+        const password = request.requestBody.password
+        const { attrs } = schema.users.findBy({ email })
+
+        if (attrs.password !== password) {
+          return new Response(401, { some: 'header' }, { errors: [ 'Username or password is invalid' ] });
+        }
+
+        delete attrs.password
+        
+        return attrs
+      })
+
+      this.post('/user', (schema, request) => {
+        const body = request.requestBody
+        const { attrs } = schema.users.create(body)
+
+        delete attrs.password
+        
+        return attrs
       })
 
       this.get('/budget', schema => {

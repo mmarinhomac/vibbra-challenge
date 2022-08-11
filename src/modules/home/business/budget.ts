@@ -8,7 +8,6 @@ import { getBudgetRequest } from '../../../services/budget'
 export default function BudgetBusiness() {
   const authState = useSelector(selectAuthState);
   const dispatch = useDispatch();
-  const isProd = process.env.NODE_ENV === 'production'
 
   const [initialRender, setInitialRender] = useState<boolean>(true)
 
@@ -16,7 +15,7 @@ export default function BudgetBusiness() {
     // test redux store
     dispatch(signInAction(true))
 
-    const data = await getBudgetRequest({ isProd })
+    const data = await getBudgetRequest()
     console.log('#data', data)
   }
   
@@ -25,9 +24,9 @@ export default function BudgetBusiness() {
   useEffect(() => {
     if (initialRender) {
       handleInitialData()
-      // fetch('http://localhost:3000/api/budget')
-      //   .then(data => data.json())
-      //   .then(data => console.log(data))
+      fetch('http://localhost:3000/api/budget')
+        .then(data => data.json())
+        .then(data => console.log(data))
       // fetch('http://localhost:3000/api/preferences')
       //   .then(data => data.json())
       //   .then(data => console.log(data))

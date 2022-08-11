@@ -50,8 +50,14 @@ export default createGlobalStyle`
     } */
   }
 
-  html, body, #root {
+  html, body, #__next {
     height: 100%;
+  }
+
+  #__next {
+    & > div {
+      height: 100%;
+    }
   }
 
   body {
