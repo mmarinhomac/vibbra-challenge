@@ -27,21 +27,21 @@ export function makeServer() {
         ],
 
         // Business Mock
-        budgets: [{ maximumBillingLimit: 81000 }],
+        budgets: [{ maximumBillingLimit: 81000, currentRevenue: 17750 }],
         preferences: [{ notification: ['email', 'sms'] }],
         companies: [
           {
-            cnpj: '75.890.985/0001-77',
+            cnpj: '75890985000177',
             name: 'Lara e Márcio Restaurante ME',
             socialReason: 'Lara e Márcio Restaurante ME'
           },
           {
-            cnpj: '71.170.884/0001-70',
+            cnpj: '71170884000170',
             name: 'Emanuel e Larissa Marcenaria Ltda',
             socialReason: 'Emanuel e Larissa Marcenaria Ltda'
           },
           {
-            cnpj: '31.303.008/0001-50',
+            cnpj: '31303008000150',
             name: 'Antonio e Antonio Buffet Ltda',
             socialReason: 'Antonio e Antonio Buffet Ltda'
           }
@@ -146,27 +146,88 @@ export function makeServer() {
       })
 
       this.get('/budget', schema => {
-        return schema.first('budget')
+        const { attrs } = schema.first('budget')
+        return attrs
       })
 
-      this.get('/preferences', schema => {
-        return schema.first('preference')
+      this.put('/budget', (schema, request) => {
+        const body = request.requestBody
+        return schema.budgets.find(1).update(body)
+      })
+
+      this.put('/preferences', (schema, request) => {
+        const body = request.requestBody
+        return schema.preferences.find(1).update(body)
       })
 
       this.get('/companies', schema => {
-        return schema.all('companie')
+        return schema.companies.all()
+      })
+
+      this.post('/companies', (schema, request) => {
+        const body = request.requestBody
+        return schema.companies.create(body)
+      })
+
+      this.put('/companies/:id', (schema, request) => {
+        const id = request.params.id
+        const body = request.requestBody
+        return schema.companies.find(id).update(body)
       })
 
       this.get('/categories', schema => {
-        return schema.all('categorie')
+        return schema.categories.all()
       })
 
-      this.get('/expenses', schema => {
-        return schema.all('expense')
+      this.post('/categories', (schema, request) => {
+        const body = request.requestBody
+        return schema.categories.create(body)
+      })
+
+      this.put('/categories/:id', schema => {
+        const id = request.params.id
+        const body = request.requestBody
+        return schema.categories.find(id).update(body)
       })
 
       this.get('/invoices', schema => {
-        return schema.all('invoice')
+        return schema.invoices.all()
+      })
+
+      this.post('/invoices', (schema, request) => {
+        const body = request.requestBody
+        return schema.invoices.create(body)
+      })
+
+      this.put('/invoices/:id', schema => {
+        const id = request.params.id
+        const body = request.requestBody
+        return schema.invoices.find(id).update(body)
+      })
+
+      this.delete('/invoices/:id', schema => {
+        const id = request.params.id
+        return schema.invoices.find(id).destroy()
+      })
+
+      this.get('/expenses', schema => {
+        return schema.expenses.all()
+      })
+
+      this.post('/expenses', (schema, request) => {
+        const body = request.requestBody
+        return schema.expenses.create(body)
+      })
+
+      this.put('/expenses/:id', schema => {
+        const id = request.params.id
+        const body = request.requestBody
+        return schema.expenses.find(id).update(body)
+      })
+
+      this.delete('/expenses/:id', schema => {
+        const id = request.params.id
+        return schema.expenses.find(id).destroy()
       })
     },
   })

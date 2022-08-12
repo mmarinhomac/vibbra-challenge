@@ -11,6 +11,7 @@ export const Container = styled.label<IContainer>`
   align-items: center;
   gap: 8px;
   user-select: none;
+  cursor: pointer;
   
   label {
     position: relative;
