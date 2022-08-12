@@ -155,6 +155,11 @@ export function makeServer() {
         return schema.budgets.find(1).update(body)
       })
 
+      this.get('/preferences', schema => {
+        const { attrs } = schema.first('preferences')
+        return attrs
+      })
+
       this.put('/preferences', (schema, request) => {
         const body = request.requestBody
         return schema.preferences.find(1).update(body)
@@ -195,7 +200,12 @@ export function makeServer() {
       })
 
       this.post('/invoices', (schema, request) => {
+        const { attrs } = schema.first('budget')
+        
         const body = request.requestBody
+        const currentRevenueUpdated = attrs.currentRevenue + body.value
+        
+        schema.budgets.find(1).update({ currentRevenue: currentRevenueUpdated })
         return schema.invoices.create(body)
       })
 
