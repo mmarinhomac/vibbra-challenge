@@ -19,7 +19,7 @@ export default function BudgetBusiness() {
     console.log('#data', data)
   }
   
-  useEffect(() => setInitialRender(false))
+  useEffect(() => setInitialRender(false), [])
 
   useEffect(() => {
     if (initialRender) {
