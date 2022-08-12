@@ -1,5 +1,11 @@
 import { useAuthContext } from '../context'
 
+import { createUserRequest } from '../../../services/user'
+
+const signUpErrorsTypes = {
+  'COD999': 'COD999 - Contate Administrador do Sistema',
+}
+
 export default function SignUpBusiness() {
   const context = useAuthContext()
 
@@ -35,14 +41,24 @@ export default function SignUpBusiness() {
     return { validated, errors }
   }
 
-  const onSubmit = (event : any) => {
+  const onSubmit = async (event : any) => {
     event.preventDefault()
     const { validated, errors } = validatedFormData()
 
+    // @refactor - add Toast Message
     if (!validated) return console.log(errors)
 
-    // send request
-    console.log(context.signUpFormData)
+    try {
+      const data = await createUserRequest({ body: context.signUpFormData })
+      // @refactor - add Toast Message
+      console.log(data)
+      changeFormMode()
+    } catch (error : any) {
+      // @refactor - add Toast Message
+      const errors = error?.response?.data?.errors
+      const message = Array.isArray(errors) ? errors[0] : signUpErrorsTypes['COD999']
+      console.log(message)
+    }
   }
 
   return {

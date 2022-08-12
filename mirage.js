@@ -125,20 +125,26 @@ export function makeServer() {
       this.post('/auth', (schema, request) => {
         const email = JSON.parse(request.requestBody).email
         const password = JSON.parse(request.requestBody).password
-        
-        const { attrs } = schema.users.findBy({ email })
 
-        if (attrs.password !== password) {
-          return new Response(401, { some: 'header' }, { errors: [ 'Username or password is invalid' ] })
+        const data = schema.users.findBy({ email })
+
+        if (!data || (data.password !== password)) {
+          return new Response(404, { some: 'header' }, { errors: [ 'Usuário ou senha inválido' ] })
         }
 
-        delete attrs.password
+        delete data.attrs.password
         
-        return { ...attrs, token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
+        return { ...data.attrs, token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
+      })
+
+      // test
+      this.get('/users', (schema, request) => {
+        return schema.users.all()
       })
 
       this.post('/user', (schema, request) => {
         const body = JSON.parse(request.requestBody)
+        console.log(request.requestBody)
         const { attrs } = schema.users.create(body)
 
         delete attrs.password

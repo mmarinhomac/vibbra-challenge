@@ -1,5 +1,6 @@
 
 import { useDispatch } from "react-redux"
+import { useRouter } from 'next/router'
 
 import { useAuthContext } from '../context'
 
@@ -7,9 +8,14 @@ import { signInAction } from "../../../store/authSlice"
 
 import { createAuthRequest } from '../../../services/auth'
 
+const signInErrorsTypes = {
+  'COD999': 'COD999 - Contate Administrador do Sistema',
+}
+
 export default function SignInBusiness() {
   const context = useAuthContext()
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const changeFormMode = () => context.setSignInFormMode(false)
 
@@ -58,9 +64,12 @@ export default function SignInBusiness() {
       localStorage.setItem('userName', name)
       
       dispatch(signInAction(true))
-    } catch (error) {
+      router.push('/')
+    } catch (error : any) {
       // @refactor - add Toast Message
-      console.log(error)
+      const errors = error?.response?.data?.errors
+      const message = Array.isArray(errors) ? errors[0] : signInErrorsTypes['COD999']
+      console.log(message)
     }
   }
 
