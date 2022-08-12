@@ -3,8 +3,8 @@ import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
 
 import SignInBusiness from '../../business/signIn'
 
-import Input from '../../../../components/Input'
-import Checkbox from '../../../../components/Checkbox'
+import Input from '../../../../common/components/Input'
+import Checkbox from '../../../../common/components/Checkbox'
 
 import {
   Container,

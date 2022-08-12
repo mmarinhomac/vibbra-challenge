@@ -9,17 +9,14 @@ export default function ExpenseBusiness() {
 
   const [initialRender, setInitialRender] = useState<boolean>(true)
 
-  const handleInitialData = () => {
-    
-  }
-
-  useEffect(() => setInitialRender(false), [])
-
+  // Handle initial data
   useEffect(() => {
     if (initialRender) {
-      handleInitialData()
+      console.log('initial data')
     }
-  }, [initialRender, handleInitialData])
+  }, [initialRender])
+
+  useEffect(() => setInitialRender(false), [])
 
   return {
   }

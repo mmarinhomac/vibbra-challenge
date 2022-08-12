@@ -23,6 +23,14 @@ export function makeServer() {
             companyName: 'Vibbraneo Transportes Ltda',
             phone: '1137616136',
             password: '123456',
+          },
+          {
+            email: 'test',
+            name: 'Sr. Vibbraneo',
+            cnpj: '18804552000118',
+            companyName: 'Vibbraneo Transportes Ltda',
+            phone: '1137616136',
+            password: '1',
           }
         ],
 

@@ -5,18 +5,14 @@ import { useState, useEffect } from 'react'
 export default function BudgetBusiness() {
   const [initialRender, setInitialRender] = useState<boolean>(true)
 
-  const handleInitialData = async () => {
-    // const data = await getBudgetRequest()
-    // console.log('#data', data)
-  }
-  
-  useEffect(() => setInitialRender(false), [])
-
+  // Handle initial data
   useEffect(() => {
     if (initialRender) {
-      handleInitialData()
+      console.log('initial data')
     }
   }, [initialRender])
+
+  useEffect(() => setInitialRender(false), [])
 
   return {
   }

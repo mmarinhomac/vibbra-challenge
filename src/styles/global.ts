@@ -52,12 +52,18 @@ export default createGlobalStyle`
 
   html, body, #__next {
     height: 100%;
+    width: 100%;
   }
 
   #__next {
-    & > div {
-      height: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #__next > div {
+    height: 100%;
+    width: 100%;
   }
 
   body {

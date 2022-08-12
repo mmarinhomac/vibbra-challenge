@@ -40,7 +40,7 @@ export const Container = styled.label<IContainer>`
   }
 
   span {
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 400;
   }
 `

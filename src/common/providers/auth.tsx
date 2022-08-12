@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { selectAuthState, signInAction } from "../../store/authSlice"
 
-type IAuthProvider = {
+interface IAuthProvider {
   children: React.ReactNode
 }
 
@@ -12,16 +12,17 @@ export default function AuthProvider({ children } : IAuthProvider) {
   const authState = useSelector(selectAuthState)
   const dispatch = useDispatch()
   const router = useRouter()
-  const privateRoutes = [
-    '/',
-    '/history',
-    '/preferences',
-  ]
-  const authRoutes = [
-    '/auth',
-  ]
 
   useEffect(() => {
+    const privateRoutes = [
+      '/',
+      '/history',
+      '/preferences',
+    ]
+    const authRoutes = [
+      '/auth',
+    ]
+
     const path = window.location.pathname
     const isPrivate = privateRoutes.indexOf(path) !== -1
     const isAuth = authRoutes.indexOf(path) !== -1
@@ -41,7 +42,7 @@ export default function AuthProvider({ children } : IAuthProvider) {
     if (
       isAuth && authState
     ) router.push('/')
-  }, [authState])
+  }, [authState, dispatch, router])
 
   return (
     <>

@@ -21,29 +21,29 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
 
-  padding: 48px 24px;
+  padding: 3.6rem 1.8rem;
 `
 
 export const Form = styled(VStack).attrs({
-  as: "form"
+  as: 'form'
 })`
   width: 100%;
   max-width: 440px;
 
   & > h1 {
-    font-size: 24px;
+    font-size: 1.6rem;
     font-weight: 700;
   }
 
   & > span {
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: 400;
-    margin: 2px 0 34px;
+    margin: 0.1rem 0 2rem;
   }
 
   div:nth-of-type(1) {
     justify-content: center;
-    margin: 8px 0 24px;
+    margin: 0.5rem 0 1.8rem;
 
     div {
       width: 100%;
@@ -53,19 +53,19 @@ export const Form = styled(VStack).attrs({
     }
 
     span {
-      margin: 0 14px;
-      font-size: 14px;
+      margin: 0 1.6rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: rgba(0, 0, 0, 0.35);
     }
   }
 
   & > div > input {
-    margin-bottom: 18px;
+    margin-bottom: 1.2rem;
   }
 
   div:nth-of-type(4) {
-    margin: 6px 0 34px;
+    margin: 0.2rem 0 1.8rem;
   }
 `
 
@@ -80,39 +80,41 @@ export const BtnSocialLogin = styled(HStack).attrs({
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  padding: 8px 0;
-  margin-bottom: 10px;
+  padding: 0.8rem 0;
+  margin-bottom: 0.6rem;
 
   svg {
-    font-size: 24px;
-    margin-right: 8px;
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
 
     ${({ iconColor }) => iconColor && `color: ${iconColor};`}
   }
 
   span {
-    font-size: 14px;
+    font-size: 0.9rem;
   }
 `
 
 export const BtnText = styled.button`
   white-space: nowrap;
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: 600;
   border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  margin-left: 0.4rem;
 `
 
 export const BtnSubmit = styled.button`
   white-space: nowrap;
-  padding: 14px 0;
+  padding: 0.8rem 0;
   background: #000;
   color: #fff;
   border-radius: 6px;
+  font-size: 1.2rem;
 `
 
 export const BtnSignUp = styled.button`
   white-space: nowrap;
-  margin-top: 34px;
+  margin-top: 1.8rem;
   font-weight: 400;
 
   strong {
