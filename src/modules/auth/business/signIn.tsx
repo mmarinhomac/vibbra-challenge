@@ -1,9 +1,15 @@
+
+import { useDispatch } from "react-redux"
+
 import { useAuthContext } from '../context'
 
-import { postAuthRequest } from '../../../services/auth'
+import { signInAction } from "../../../store/authSlice"
+
+import { createAuthRequest } from '../../../services/auth'
 
 export default function SignInBusiness() {
   const context = useAuthContext()
+  const dispatch = useDispatch()
 
   const changeFormMode = () => context.setSignInFormMode(false)
 
@@ -37,12 +43,25 @@ export default function SignInBusiness() {
     event.preventDefault()
     const { validated, errors } = validatedFormData()
 
+    // @refactor - add Toast Message
     if (!validated) return console.log(errors)
 
-    // send request
-    console.log(context.signInFormData)
-    const data = await postAuthRequest({ body: context.signInFormData })
-    console.log(data)
+    try {
+      const {
+        token,
+        id,
+        name
+      } = await createAuthRequest({ body: context.signInFormData })
+
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', id)
+      localStorage.setItem('userName', name)
+      
+      dispatch(signInAction(true))
+    } catch (error) {
+      // @refactor - add Toast Message
+      console.log(error)
+    }
   }
 
   return {

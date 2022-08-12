@@ -1,6 +1,6 @@
-import { configureStore, AnyAction, Dispatch } from "@reduxjs/toolkit";
-import { authSlice } from "./authSlice";
-import { createWrapper } from "next-redux-wrapper";
+import { configureStore, AnyAction, Dispatch } from "@reduxjs/toolkit"
+import { authSlice } from "./authSlice"
+import { createWrapper } from "next-redux-wrapper"
 
 const makeStore = () =>
   configureStore({
@@ -14,4 +14,4 @@ export type AppStore = ReturnType<typeof makeStore>
 export type AppState = ReturnType<AppStore["getState"]>
 export type AppDispatch = Dispatch<AnyAction>
 
-export const wrapper = createWrapper<AppStore>(makeStore);
+export const wrapper = createWrapper<AppStore>(makeStore)

@@ -3,7 +3,7 @@ import api from './index'
 export const getCompaniesRequest = () => new Promise((resolve, reject) => {
   api.get('/companies')
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const createCompanieRequest = ({
@@ -13,7 +13,7 @@ export const createCompanieRequest = ({
 }) => new Promise((resolve, reject) => {
   api.post('/companies', body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const updateCompanieRequest = ({
@@ -25,5 +25,5 @@ export const updateCompanieRequest = ({
 }) => new Promise((resolve, reject) => {
   api.put(`/companies/${id}`, body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })

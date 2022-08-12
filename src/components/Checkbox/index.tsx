@@ -3,9 +3,9 @@ import { MdCheckBoxOutlineBlank } from '@react-icons/all-files/md/MdCheckBoxOutl
 import { MdCheckBox } from '@react-icons/all-files/md/MdCheckBox'
 
 interface ICheckbox {
-  id: string;
-  label: string;
-  onChange: ({ id, value } : { id: string, value: boolean }) => any;
+  id: string
+  label: string
+  onChange: ({ id, value } : { id: string, value: boolean }) => any
 }
 
 import {
@@ -20,7 +20,6 @@ export default function Checkbox({
   const [checked, setChecked] = useState<boolean>(false)
 
   const onUpdate = (value : boolean) => {
-    console.log(value)
     setChecked(value)
     onChange({ id, value})
   }

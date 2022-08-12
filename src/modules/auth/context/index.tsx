@@ -24,7 +24,7 @@ interface IAuthContext {
 }
 
 interface IAuthProvider {
-  children: React.ReactElement;
+  children: React.ReactElement
 }
 
 const initialState = {

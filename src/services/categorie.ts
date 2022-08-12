@@ -3,7 +3,7 @@ import api from './index'
 export const getCategoriesRequest = () => new Promise((resolve, reject) => {
   api.get('/categories')
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const createCategorieRequest = ({
@@ -13,7 +13,7 @@ export const createCategorieRequest = ({
 }) => new Promise((resolve, reject) => {
   api.post('/categories', body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const updateCategorieRequest = ({
@@ -25,5 +25,5 @@ export const updateCategorieRequest = ({
 }) => new Promise((resolve, reject) => {
   api.put(`/categories/${id}`, body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })

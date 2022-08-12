@@ -1,11 +1,21 @@
 import api from './index'
 
-export const postAuthRequest = ({
+interface ICreateAuthRequest {
+  email: string
+  name: string
+  cnpj: string
+  companyName: string
+  phone: string
+  id: string
+  token: string
+}
+
+export const createAuthRequest = ({
   body
 } : {
   body: any
-}) => new Promise((resolve, reject) => {
+}) => new Promise<ICreateAuthRequest>((resolve, reject) => {
   api.post('/auth', body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })

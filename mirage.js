@@ -123,21 +123,22 @@ export function makeServer() {
       })
 
       this.post('/auth', (schema, request) => {
-        const email = request.requestBody.email
-        const password = request.requestBody.password
+        const email = JSON.parse(request.requestBody).email
+        const password = JSON.parse(request.requestBody).password
+        
         const { attrs } = schema.users.findBy({ email })
 
         if (attrs.password !== password) {
-          return new Response(401, { some: 'header' }, { errors: [ 'Username or password is invalid' ] });
+          return new Response(401, { some: 'header' }, { errors: [ 'Username or password is invalid' ] })
         }
 
         delete attrs.password
         
-        return attrs
+        return { ...attrs, token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c' }
       })
 
       this.post('/user', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         const { attrs } = schema.users.create(body)
 
         delete attrs.password
@@ -151,7 +152,7 @@ export function makeServer() {
       })
 
       this.put('/budget', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.budgets.find(1).update(body)
       })
 
@@ -161,7 +162,7 @@ export function makeServer() {
       })
 
       this.put('/preferences', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.preferences.find(1).update(body)
       })
 
@@ -170,13 +171,13 @@ export function makeServer() {
       })
 
       this.post('/companies', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.companies.create(body)
       })
 
       this.put('/companies/:id', (schema, request) => {
         const id = request.params.id
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.companies.find(id).update(body)
       })
 
@@ -185,13 +186,13 @@ export function makeServer() {
       })
 
       this.post('/categories', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.categories.create(body)
       })
 
       this.put('/categories/:id', schema => {
         const id = request.params.id
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.categories.find(id).update(body)
       })
 
@@ -202,7 +203,7 @@ export function makeServer() {
       this.post('/invoices', (schema, request) => {
         const { attrs } = schema.first('budget')
         
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         const currentRevenueUpdated = attrs.currentRevenue + body.value
         
         schema.budgets.find(1).update({ currentRevenue: currentRevenueUpdated })
@@ -211,7 +212,7 @@ export function makeServer() {
 
       this.put('/invoices/:id', schema => {
         const id = request.params.id
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.invoices.find(id).update(body)
       })
 
@@ -225,13 +226,13 @@ export function makeServer() {
       })
 
       this.post('/expenses', (schema, request) => {
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.expenses.create(body)
       })
 
       this.put('/expenses/:id', schema => {
         const id = request.params.id
-        const body = request.requestBody
+        const body = JSON.parse(request.requestBody)
         return schema.expenses.find(id).update(body)
       })
 

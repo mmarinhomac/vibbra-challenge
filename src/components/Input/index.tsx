@@ -1,8 +1,8 @@
 interface IInput {
-  id: string;
-  type?: string;
-  placeholder: string;
-  onChange: ({ id, value } : { id: string, value: string }) => any;
+  id: string
+  type?: string
+  placeholder: string
+  onChange: ({ id, value } : { id: string, value: string }) => any
 }
 
 import {

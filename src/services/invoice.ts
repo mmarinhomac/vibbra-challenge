@@ -3,7 +3,7 @@ import api from './index'
 export const getInvoicesRequest = () => new Promise((resolve, reject) => {
   api.get('/invoices')
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const createInvoiceRequest = ({
@@ -13,7 +13,7 @@ export const createInvoiceRequest = ({
 }) => new Promise((resolve, reject) => {
   api.post('/invoices', body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const updateInvoiceRequest = ({
@@ -25,7 +25,7 @@ export const updateInvoiceRequest = ({
 }) => new Promise((resolve, reject) => {
   api.put(`/invoices/${id}`, body)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })
 
 export const deleteInvoiceRequest = ({
@@ -35,5 +35,5 @@ export const deleteInvoiceRequest = ({
 }) => new Promise((resolve, reject) => {
   api.delete(`/invoices/${id}`)
     .then(({ data }) => resolve(data))
-    .catch((err) => reject(err));
+    .catch((err) => reject(err))
 })

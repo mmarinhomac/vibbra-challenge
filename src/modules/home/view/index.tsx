@@ -1,11 +1,9 @@
 import BudgetBusiness from '../business/budget'
 
 export default function HomeView() {
-  const {
-    authState
-  } = BudgetBusiness()
+  BudgetBusiness()
 
   return (
-    <h1>Home {authState ? 'Logged' : 'Is Not Logged'}</h1>
+    <h1>Home</h1>
   )
 }

@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react'
 interface IHomeContext {}
 
 interface IHomeProvider {
-  children: React.ReactElement;
+  children: React.ReactElement
 }
 
 const initialState = {}

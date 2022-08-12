@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react'
 interface IHistoryContext {}
 
 interface IHistoryProvider {
-  children: React.ReactElement;
+  children: React.ReactElement
 }
 
 const initialState = {}

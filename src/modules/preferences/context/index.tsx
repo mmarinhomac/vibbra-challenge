@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react'
 interface IPreferencesContext {}
 
 interface IPreferencesProvider {
-  children: React.ReactElement;
+  children: React.ReactElement
 }
 
 const initialState = {}

@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { AppState } from "../store";
+import { AppState } from "../store"
 
 export interface AuthState {
-  authState: boolean;
+  authState: boolean
 }
 
 const initialState: AuthState = {
@@ -15,13 +15,13 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     signInAction(state: AuthState, action: PayloadAction<boolean>) {
-      state.authState = action.payload;
+      state.authState = action.payload
     },
   }
-});
+})
 
-export const { signInAction } = authSlice.actions;
+export const { signInAction } = authSlice.actions
 
-export const selectAuthState = (state: AppState) => state.auth.authState;
+export const selectAuthState = (state: AppState) => state.auth.authState
 
-export default authSlice.reducer;
+export default authSlice.reducer
