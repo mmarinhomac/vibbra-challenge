@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useRouter } from 'next/router'
 
-import { selectAuthState, signInAction } from "../../store/authSlice"
+import { selectAuthState, setLogged } from "../../store/authSlice"
 
 interface IAuthProvider {
   children: React.ReactNode
@@ -31,7 +31,7 @@ export default function AuthProvider({ children } : IAuthProvider) {
     // Logged - Update Store
     if (
       !authState && token
-    ) dispatch(signInAction(true))
+    ) dispatch(setLogged(true))
 
     // Not Authorized
     if (

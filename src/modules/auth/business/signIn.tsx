@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { useAuthContext } from '../context'
 
-import { signInAction } from "../../../store/authSlice"
+import { setLogged } from "../../../store/authSlice"
 
 import { createAuthRequest } from '../../../services/auth'
 
@@ -63,7 +63,7 @@ export default function SignInBusiness() {
       localStorage.setItem('userId', id)
       localStorage.setItem('userName', name)
       
-      dispatch(signInAction(true))
+      dispatch(setLogged(true))
       router.push('/')
     } catch (error : any) {
       // @refactor - add Toast Message

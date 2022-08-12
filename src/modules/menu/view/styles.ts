@@ -21,14 +21,20 @@ export const Header = styled(HStack).attrs({
   }
 
   & > div {
-    gap: 2rem;
+    gap: 2.5rem;
   }
 `
 
+interface IBtnAction {
+  isSelect?: boolean
+}
+
 export const BtnAction = styled(HStack).attrs({
   as: 'button'
-})`
+})<IBtnAction>`
   gap: 0.3rem;
+
+  ${({ isSelect }) => isSelect && 'font-weight: 700;'}
 
   svg {
     font-size: 1.3rem;
