@@ -27,7 +27,7 @@ export function withAuth(WrapperComponent : React.FunctionComponent<any>) {
       else {
         Router.push('/auth')
       }
-    }, [authState])
+    }, [authState, dispatch])
 
     if (accepted) {
       return <WrapperComponent {...props} />

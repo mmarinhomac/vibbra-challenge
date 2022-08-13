@@ -87,7 +87,7 @@ export default function BudgetBusiness() {
           })
         })
     }
-  }, [initialRender])
+  }, [initialRender, context])
 
   useEffect(() => setInitialRender(false), [])
 

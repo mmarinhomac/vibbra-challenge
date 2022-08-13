@@ -26,7 +26,7 @@ export default function List({
   return (
     <Container>
       {data.map(item => (
-        <Item>
+        <Item key={item.id}>
           <div>
             <strong>{item.title}</strong>
             <span>{item.subTitle}</span>

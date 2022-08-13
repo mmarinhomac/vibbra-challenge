@@ -41,6 +41,7 @@ export default function Select({
           <ContainerOptions>
             {options.map(option => (
               <button 
+                key={option}
                 onClick={() => onUpdate(option)}
               >
                 {option}
