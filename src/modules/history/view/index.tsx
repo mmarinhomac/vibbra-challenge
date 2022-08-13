@@ -15,7 +15,7 @@ function HistoryView() {
           <button>Despesas</button>
         </div>
 
-        <Button>Nova Nota Fiscal</Button>
+        <Button onClick={() => {}}>Nova Nota Fiscal</Button>
       </ContainerHeader>
 
       <List

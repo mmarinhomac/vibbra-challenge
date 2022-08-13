@@ -25,7 +25,7 @@ function PreferencesView() {
           <span>Limite máximo de faturamento para MEI</span>
           <HStack>
             <Input id='limitBilling' onChange={() => {}}/>
-            <Button>Salvar</Button>
+            <Button onClick={() => {}}>Salvar</Button>
           </HStack>
         </VStack>
         <VStack>
@@ -46,7 +46,7 @@ function PreferencesView() {
             <button>Categorias</button>
           </div>
 
-          <Button>Nova Empresa</Button>
+          <Button onClick={() => {}}>Nova Empresa</Button>
         </RecordsContentHeader>
 
         <List 
