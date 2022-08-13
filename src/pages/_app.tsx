@@ -1,9 +1,11 @@
 import type { AppProps } from 'next/app'
 
-import MenuLayout from '../modules/menu/view/menuLayout'
+import { wrapper } from "../store"
 
 import GlobalStyle from '../styles/global'
-import { wrapper } from "../store"
+
+import MenuLayout from '../modules/menu/view/menuLayout'
+import Modal from '../common/components/Modal'
 
 import { makeServer } from '../../mirage'
 
@@ -12,8 +14,9 @@ makeServer()
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MenuLayout>
-      <Component {...pageProps} />
       <GlobalStyle />
+      <Component {...pageProps} />
+      <Modal />
     </MenuLayout>
   )
 }

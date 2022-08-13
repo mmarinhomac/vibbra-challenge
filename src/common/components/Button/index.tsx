@@ -1,5 +1,8 @@
+import React, { MouseEventHandler } from "react"
+
 interface IButton {
-  children: string
+  onClick: MouseEventHandler<HTMLButtonElement>
+  children: string | React.ReactNode
 }
 
 import { 
@@ -7,9 +10,10 @@ import {
 } from "./styles"
 
 export default function Button({
+  onClick,
   children,
 } : IButton) {
   return (
-    <Container>{children}</Container>
+    <Container onClick={onClick}>{children}</Container>
   )
 }

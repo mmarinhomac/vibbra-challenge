@@ -18,12 +18,16 @@ import {
   BiRowContent,
   CardChart,
 } from './styles'
+import InvoiceBusiness from '../business/invoice'
 
 function HomeView() {
   const {
     billingAvailable,
     monthlyInvoices
   } = BudgetBusiness()
+  const {
+    onInvokeNewInvoice
+  } = InvoiceBusiness()
 
   return (
     <Container>
@@ -36,8 +40,8 @@ function HomeView() {
         />
 
         <HStack>
-          <Button>Nova Nota Fiscal</Button>
-          <Button>Nova Despesa</Button>
+          <Button onClick={() => onInvokeNewInvoice()}>Nova Nota Fiscal</Button>
+          <Button onClick={() => {}}>Nova Despesa</Button>
         </HStack>
       </ContentHeader>
 

@@ -1,23 +1,54 @@
-import { useState, useEffect } from 'react'
-
-import { useHomeContext } from '../context'
-
-// import { getBudgetRequest } from '../../../services/budget'
+import { useDispatch } from "react-redux"
+import { setModal } from "../../../store/systemSlice"
 
 export default function InvoiceBusiness() {
-  const context = useHomeContext()
+  const dispatch = useDispatch()
 
-  const [initialRender, setInitialRender] = useState<boolean>(true)
+  const onFormUpdate = ({ id, value } : { id: string, value: string }) => {
+    console.log({ id, value })
+  }
 
-  // Handle initial data
-  useEffect(() => {
-    if (initialRender) {
-      console.log('initial data')
-    }
-  }, [initialRender])
-
-  useEffect(() => setInitialRender(false), [])
+  const onSubmit = () => {
+    console.log('submit')
+  }
 
   return {
+    onInvokeNewInvoice: () => dispatch(setModal({
+      state: true,
+      title: 'Registrar Nota Fiscal',
+      fields: [
+        {
+          id: 'company',
+          label: 'Empresa',
+          onChange: onFormUpdate,
+        },
+        {
+          id: 'value',
+          label: 'Valor da Nota Fiscal',
+          onChange: onFormUpdate,
+        },
+        {
+          id: 'number',
+          label: 'Número da Nota Fiscal',
+          onChange: onFormUpdate,
+        },
+        {
+          id: 'description',
+          label: 'Descrição do serviço prestado',
+          onChange: onFormUpdate,
+        },
+        {
+          id: 'createAt',
+          label: 'Mês de competência',
+          onChange: onFormUpdate,
+        },
+        {
+          id: 'payDay',
+          label: 'Data de recebimento',
+          onChange: onFormUpdate,
+        }
+      ],
+      onAction: onSubmit
+    }))
   }
 }

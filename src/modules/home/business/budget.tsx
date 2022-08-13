@@ -96,7 +96,7 @@ export default function BudgetBusiness() {
       const optionsUpdated = { ...options }
       optionsUpdated.xaxis.categories = ['2022']
       const series = context.billingAvailable
-      console.log(optionsUpdated)
+      // console.log(optionsUpdated)
       return {
         options: optionsUpdated,
         series
