@@ -10,7 +10,6 @@ import {
   Form,
   HStack,
   BtnSocialLogin,
-  BtnText,
   BtnSubmit,
   BtnSignUp,
 } from './styles'
