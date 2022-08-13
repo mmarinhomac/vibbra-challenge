@@ -3,17 +3,13 @@ import { IoMdLogOut } from '@react-icons/all-files/io/IoMdLogOut'
 
 import MenuBusiness from "../business"
 
-interface IMenuView {
-  children: React.ReactNode
-}
-
 import {
   Header,
   HStack,
   BtnAction,
 } from "./styles"
 
-export default function MenuView({ children } : IMenuView) {
+export default function MenuView() {
   const { 
     authState,
     helloTitle,
@@ -54,8 +50,6 @@ export default function MenuView({ children } : IMenuView) {
           </HStack>
         </Header>
       )}
-
-      {children}
     </>
   )
 }
