@@ -1,19 +1,30 @@
 import { createContext, useContext, useState } from 'react'
 
-interface IHistoryContext {}
+interface IHistoryContext {
+  tabSelected: number
+  setTabSelected: React.Dispatch<React.SetStateAction<number>>
+}
 
 interface IHistoryProvider {
   children: React.ReactElement
 }
 
-const initialState = {}
+const initialState : IHistoryContext = {
+  tabSelected: 0,
+  setTabSelected: () => {},
+}
 
 const HistoryContext = createContext<IHistoryContext>(initialState)
 
-export const HistoryProvider = ({ children } : IHistoryProvider) => {  
+export const HistoryProvider = ({ children } : IHistoryProvider) => {
+  // Switches
+  const [tabSelected, setTabSelected] = useState(initialState.tabSelected)
+
   return (
     <HistoryContext.Provider 
-      value={{}}
+      value={{
+        tabSelected, setTabSelected
+      }}
     >
       {children}
     </HistoryContext.Provider>

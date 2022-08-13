@@ -11,7 +11,7 @@ interface IMenuProvider {
   children: React.ReactElement
 }
 
-const initialState = {
+const initialState : IMenuContext = {
   helloTitle: '', 
   setHelloTitle: () => {},
   menuSelection: 0, 

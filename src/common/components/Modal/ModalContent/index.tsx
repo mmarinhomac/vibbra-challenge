@@ -33,7 +33,7 @@ export default function ModalContent() {
         {modalData.modalFields?.map(field => (
           <div key={field.id}>
             <strong>{field.label}</strong>
-            <Input id={field.id} onChange={field.onChange}/>
+            <Input id={field.id} onChange={modalData.modalFieldOnChange}/>
           </div>
         ))}
 

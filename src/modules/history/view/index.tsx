@@ -1,5 +1,9 @@
 import { withAuth } from "../../../common/hooks/withAuth"
 
+import HistoryBusiness from "../business"
+import InvoiceBusiness from "../business/invoice"
+import ExpenseBusiness from "../business/expense"
+
 import List from "../../../common/components/List"
 import Button from "../../../common/components/Button"
 
@@ -7,15 +11,34 @@ import { Container } from "./styles"
 import { RecordsContentHeader as ContainerHeader, Tab } from "../../preferences/view/styles"
 
 function HistoryView() {
+  const {
+    tabSelected,
+    tabTitle,
+    onChangeTab,
+    onInvokeRecord,
+  } = HistoryBusiness()
+  const {
+    onInvokeNewInvoice,
+  } = InvoiceBusiness()
+  const {
+    onInvokeNewExpense,
+  } = ExpenseBusiness()
+
   return (
     <Container>
       <ContainerHeader>
         <div>
-          <Tab isSelect={true} onClick={() => {}}>Notas Fiscais</Tab>
-          <Tab isSelect={false} onClick={() => {}}>Despesas</Tab>
+          <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab()}>Notas Fiscais</Tab>
+          <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab()}>Despesas</Tab>
         </div>
 
-        <Button onClick={() => {}}>Nova Nota Fiscal</Button>
+        <Button 
+          onClick={() => 
+            onInvokeRecord(tabSelected, onInvokeNewInvoice, onInvokeNewExpense)
+          }
+        >
+          {tabTitle}
+        </Button>
       </ContainerHeader>
 
       <List

@@ -37,7 +37,7 @@ interface IHomeProvider {
   children: React.ReactElement
 }
 
-const initialState = {
+const initialState : IHomeContext = {
   filterYear: '',
   setFilterYear: () => {},
   billingAvailable: [{

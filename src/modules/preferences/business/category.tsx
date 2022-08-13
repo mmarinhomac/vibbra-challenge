@@ -28,19 +28,17 @@ export default function CategoryBusiness() {
         {
           id: 'categoryName',
           label: 'Nome',
-          onChange: onFormUpdate
         },
         {
           id: 'categoryDescription',
           label: 'Descrição',
-          onChange: onFormUpdate
         },
         {
           id: 'categoryFiled',
           label: 'Arquivada',
-          onChange: onFormUpdate
         }
       ],
+      onChange: onFormUpdate,
       onAction: onSubmit
     }))
   }

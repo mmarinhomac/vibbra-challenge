@@ -19,34 +19,29 @@ export default function ExpenseBusiness() {
       {
         id: 'company',
         label: 'Empresa',
-        onChange: onFormUpdate,
       },
       {
         id: 'category',
         label: 'Categoria',
-        onChange: onFormUpdate,
       },
       {
         id: 'value',
         label: 'Valor da despesa',
-        onChange: onFormUpdate,
       },
       {
         id: 'name',
         label: 'Nome da despesa',
-        onChange: onFormUpdate,
       },
       {
         id: 'payDay',
         label: 'Data de pagamento',
-        onChange: onFormUpdate,
       },
       {
         id: 'createAt',
         label: 'Data de competência',
-        onChange: onFormUpdate,
       }
     ],
+    onChange: onFormUpdate,
     onAction: onSubmit
   }))
 

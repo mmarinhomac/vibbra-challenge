@@ -19,34 +19,29 @@ export default function InvoiceBusiness() {
       {
         id: 'company',
         label: 'Empresa',
-        onChange: onFormUpdate,
       },
       {
         id: 'value',
         label: 'Valor da Nota Fiscal',
-        onChange: onFormUpdate,
       },
       {
         id: 'number',
         label: 'Número da Nota Fiscal',
-        onChange: onFormUpdate,
       },
       {
         id: 'description',
         label: 'Descrição do serviço prestado',
-        onChange: onFormUpdate,
       },
       {
         id: 'createAt',
         label: 'Mês de competência',
-        onChange: onFormUpdate,
       },
       {
         id: 'payDay',
         label: 'Data de recebimento',
-        onChange: onFormUpdate,
       }
     ],
+    onChange: onFormUpdate,
     onAction: onSubmit
   }))
 

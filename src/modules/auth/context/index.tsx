@@ -27,7 +27,7 @@ interface IAuthProvider {
   children: React.ReactElement
 }
 
-const initialState = {
+const initialState : IAuthContext = {
   signInFormMode: true,
   setSignInFormMode: () => {},
   signInFormData: {

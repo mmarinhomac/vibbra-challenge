@@ -28,19 +28,17 @@ export default function CompanyBusiness() {
         {
           id: 'companyName',
           label: 'Nome',
-          onChange: onFormUpdate
         },
         {
           id: 'companySocialReason',
           label: 'Razão Social',
-          onChange: onFormUpdate
         },
         {
           id: 'companyRegister',
           label: 'CNPJ',
-          onChange: onFormUpdate
         }
       ],
+      onChange: onFormUpdate,
       onAction: onSubmit
     }))
   }

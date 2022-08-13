@@ -15,16 +15,16 @@ interface ICategory {
 }
 
 interface IPreferencesContext {
-  tabSelected: number,
-  setTabSelected: React.Dispatch<React.SetStateAction<number>>,
-  maximumBillingLimit: number,
-  setMaximumBillingLimit: React.Dispatch<React.SetStateAction<number>>,
-  notifications: string[],
-  setNotifications: React.Dispatch<React.SetStateAction<string[]>>,
-  companyList: ICompany[],
-  setCompanyList: React.Dispatch<React.SetStateAction<ICompany[]>>,
-  categoryList: ICategory[],
-  setCategoryList: React.Dispatch<React.SetStateAction<ICategory[]>>,
+  tabSelected: number
+  setTabSelected: React.Dispatch<React.SetStateAction<number>>
+  maximumBillingLimit: number
+  setMaximumBillingLimit: React.Dispatch<React.SetStateAction<number>>
+  notifications: string[]
+  setNotifications: React.Dispatch<React.SetStateAction<string[]>>
+  companyList: ICompany[]
+  setCompanyList: React.Dispatch<React.SetStateAction<ICompany[]>>
+  categoryList: ICategory[]
+  setCategoryList: React.Dispatch<React.SetStateAction<ICategory[]>>
 }
 
 interface IPreferencesProvider {

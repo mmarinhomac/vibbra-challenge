@@ -40,6 +40,21 @@ export default function MenuBusiness() {
     }
   }, [initialRender, userData, context])
 
+  // Handle direct access to route
+  useEffect(() => {
+    if (initialRender) {
+      const path = window.location.pathname
+      const paths = [
+        '/',
+        '/preferences',
+        '/history',
+      ]
+      
+      const isPresent = context.menuSelection === paths.indexOf(path)
+      if (!isPresent) context.setMenuSelection(paths.indexOf(path))
+    }
+  }, [initialRender, context])
+
   return {
     authState,
     helloTitle: context.helloTitle,
