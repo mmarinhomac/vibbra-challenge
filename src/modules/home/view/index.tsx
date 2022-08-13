@@ -23,6 +23,7 @@ import {
 
 function HomeView() {
   const {
+    onChangeFilterYear,
     billingAvailable,
     monthlyInvoices,
     monthlyExpenses,
@@ -42,8 +43,8 @@ function HomeView() {
         <Select
           id='filterYear'
           label='Filtrar Ano'
-          options={['2022']}
-          onChange={() => {}}
+          options={['2021', '2022']}
+          onChange={onChangeFilterYear}
         />
 
         <HStack>
@@ -101,7 +102,7 @@ function HomeView() {
             options={expensesByCategories().options} 
             series={expensesByCategories().series} 
             width='100%' 
-            height={180} 
+            height={280} 
           />
         </CardChart>
       </BiRowContent>

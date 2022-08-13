@@ -33,12 +33,12 @@ export const BiRowContent = styled.div`
   width: 100%;
   margin-top: 1.5rem;
 
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 0.75rem));
-  grid-gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 `
 
 export const CardChart = styled.div`
+  width: 100%;
   -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1); 
   box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
 `

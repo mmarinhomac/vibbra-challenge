@@ -37,10 +37,15 @@ export function makeServer() {
         // Business Mock
         budgets: [
           { 
-            maximumBillingLimit: 81000, 
+            maximumBillingLimit: 78000, 
             currentRevenue: 25750,
-            year: '2022'
+            year: '2021'
           },
+          { 
+            maximumBillingLimit: 81000, 
+            currentRevenue: 42750,
+            year: '2022'
+          }
         ],
         preferences: [{ notification: ['email'] }],
         companies: [
@@ -88,12 +93,36 @@ export function makeServer() {
             value: 5000,
             invoiceNumber: 126542,
             description: 'Consultoria',
+            createdAt: '25/07/2021',
+            payDay: '05/08/2021'
+          },
+          {
+            companieId: 2,
+            value: 12750,
+            invoiceNumber: 135495,
+            description: 'Serviços Técnicos',
+            createdAt: '25/08/2021',
+            payDay: '05/09/2021'
+          },
+          {
+            companieId: 3,
+            value: 8000,
+            invoiceNumber: 135495,
+            description: 'Serviços Técnicos',
+            createdAt: '25/09/2021',
+            payDay: '05/09/2021'
+          },
+          {
+            companieId: 1,
+            value: 10000,
+            invoiceNumber: 126542,
+            description: 'Consultoria',
             createdAt: '25/07/2022',
             payDay: '05/08/2022'
           },
           {
             companieId: 2,
-            value: 12750,
+            value: 15750,
             invoiceNumber: 135495,
             description: 'Serviços Técnicos',
             createdAt: '25/08/2022',
@@ -101,7 +130,7 @@ export function makeServer() {
           },
           {
             companieId: 3,
-            value: 8000,
+            value: 17000,
             invoiceNumber: 135495,
             description: 'Serviços Técnicos',
             createdAt: '25/09/2022',
@@ -115,6 +144,33 @@ export function makeServer() {
             companieId: 1,
             value: 50,
             name: 'Transporte - Uber ou Taxi / Ida e Volta',
+            createdAt: '25/07/2021',
+            dateRefCompetency: '01/07/2021'
+          },
+          {
+            categorieId: 3,
+            categorieName: 'Serviços Técnicos',
+            companieId: 2,
+            value: 250,
+            name: 'Transporte - Uber ou Taxi / Ida e Volta',
+            createdAt: '25/08/2021',
+            dateRefCompetency: '01/07/2021'
+          },
+          {
+            categorieId: 1,
+            categorieName: 'Consultoria',
+            companieId: 3,
+            value: 215.25,
+            name: 'Almoço Semana',
+            createdAt: '25/09/2021',
+            dateRefCompetency: '01/07/2021'
+          },
+          {
+            categorieId: 3,
+            categorieName: 'Serviços Técnicos',
+            companieId: 1,
+            value: 500,
+            name: 'Transporte - Uber ou Taxi / Ida e Volta',
             createdAt: '25/07/2022',
             dateRefCompetency: '01/07/2022'
           },
@@ -122,7 +178,7 @@ export function makeServer() {
             categorieId: 3,
             categorieName: 'Serviços Técnicos',
             companieId: 2,
-            value: 250,
+            value: 750,
             name: 'Transporte - Uber ou Taxi / Ida e Volta',
             createdAt: '25/08/2022',
             dateRefCompetency: '01/07/2022'
@@ -131,7 +187,7 @@ export function makeServer() {
             categorieId: 1,
             categorieName: 'Consultoria',
             companieId: 3,
-            value: 215.25,
+            value: 1200,
             name: 'Almoço Semana',
             createdAt: '25/09/2022',
             dateRefCompetency: '01/07/2022'

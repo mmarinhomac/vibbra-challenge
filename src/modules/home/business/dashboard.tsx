@@ -111,6 +111,7 @@ export default function DashboardBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
+    onChangeFilterYear: ({ id, value} : { id: string, value: string}) => context.setFilterYear(value),
     billingAvailable: () => {
       const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
       optionsUpdated.xaxis.categories = [context.filterYear]
@@ -123,10 +124,20 @@ export default function DashboardBusiness() {
     monthlyInvoices: () => {
       const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
       optionsUpdated.colors = ['#affc41']
-      optionsUpdated.xaxis.categories = context.monthlyInvoices.months
+
+      const categories: string[] = []
+      const dataSeries: number[] = []
+      context.monthlyInvoices.months.forEach((item, index) => {
+        if (item.substring(3, 5) == context.filterYear.substring(2, 4)) {
+          categories.push(item)
+          dataSeries.push(context.monthlyInvoices.data[index])
+        }
+      })
+
+      optionsUpdated.xaxis.categories = categories
       const series = [{
         name: 'Receita',
-        data: context.monthlyInvoices.data
+        data: dataSeries
       }]
 
       return {
@@ -137,10 +148,20 @@ export default function DashboardBusiness() {
     monthlyExpenses: () => {
       const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
       optionsUpdated.colors = ['#ef233c']
-      optionsUpdated.xaxis.categories = context.monthlyExpenses.months
+      
+      const categories: string[] = []
+      const dataSeries: number[] = []
+      context.monthlyExpenses.months.forEach((item, index) => {
+        if (item.substring(3, 5) == context.filterYear.substring(2, 4)) {
+          categories.push(item)
+          dataSeries.push(context.monthlyExpenses.data[index])
+        }
+      })
+
+      optionsUpdated.xaxis.categories = categories
       const series = [{
         name: 'Despesa',
-        data: context.monthlyExpenses.data
+        data: dataSeries
       }]
 
       return {
@@ -151,15 +172,27 @@ export default function DashboardBusiness() {
     monthlyRelationInvoicesExpenses: () => {
       const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
       optionsUpdated.colors = ['#affc41', '#ef233c']
-      optionsUpdated.xaxis.categories = context.monthlyExpenses.months
+
+      const categories: string[] = []
+      const dataSeries1: number[] = []
+      const dataSeries2: number[] = []
+      context.monthlyExpenses.months.forEach((item, index) => {
+        if (item.substring(3, 5) == context.filterYear.substring(2, 4)) {
+          categories.push(item)
+          dataSeries1.push(context.monthlyInvoices.data[index])
+          dataSeries2.push(context.monthlyExpenses.data[index])
+        }
+      })
+
+      optionsUpdated.xaxis.categories = categories
       const series = [
         {
           name: 'Receita',
-          data: context.monthlyInvoices.data
+          data: dataSeries1
         },
         {
           name: 'Despesa',
-          data: context.monthlyExpenses.data
+          data: dataSeries2
         }
       ]
 
