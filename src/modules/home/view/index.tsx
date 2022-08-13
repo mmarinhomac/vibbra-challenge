@@ -1,14 +1,16 @@
 import dynamic from 'next/dynamic'
-
-import { withAuth } from '../../../common/hooks/withAuth'
-
-import BudgetBusiness from '../business/budget'
-
-import Select from '../../../common/components/Select'
-import Button from '../../../common/components/Button'
 const Chart = dynamic(() => import('react-apexcharts'), {
   ssr: false
 });
+
+import { withAuth } from '../../../common/hooks/withAuth'
+
+import InvoiceBusiness from '../business/invoice'
+import ExpenseBusiness from '../business/expense'
+import DashboardBusiness from '../business/dashboard'
+
+import Select from '../../../common/components/Select'
+import Button from '../../../common/components/Button'
 
 import { 
   Container,
@@ -18,8 +20,6 @@ import {
   BiRowContent,
   CardChart,
 } from './styles'
-import InvoiceBusiness from '../business/invoice'
-import ExpenseBusiness from '../business/expense'
 
 function HomeView() {
   const {
@@ -28,7 +28,7 @@ function HomeView() {
     monthlyExpenses,
     monthlyRelationInvoicesExpenses,
     expensesByCategories,
-  } = BudgetBusiness()
+  } = DashboardBusiness()
   const {
     onInvokeNewInvoice,
   } = InvoiceBusiness()

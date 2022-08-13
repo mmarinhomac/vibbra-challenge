@@ -53,7 +53,7 @@ const options : CustomOptions = {
   }
 };
 
-export default function BudgetBusiness() {
+export default function DashboardBusiness() {
   const context = useHomeContext()
 
   const [initialRender, setInitialRender] = useState(true)
@@ -78,7 +78,7 @@ export default function BudgetBusiness() {
       getInvoicesRequest()
         .then((data: any) => {
           const months = data.invoices.map((invoice: any) => 
-            String(invoice.createdAt).split('/')[1])
+            String(invoice.createdAt).substring(3, 6) + String(invoice.createdAt).substring(8, 10))
           const series = data.invoices.map((invoice: any) => 
             invoice.value)
 
@@ -90,7 +90,7 @@ export default function BudgetBusiness() {
       getExpensesRequest()
         .then((data: any) => {
           const months = data.expenses.map((expense: any) => 
-            String(expense.createdAt).split('/')[1])
+            String(expense.createdAt).substring(3, 6) + String(expense.createdAt).substring(8, 10))
           const categories = data.expenses.map((expense: any) => 
             expense.categorieName)
           const series = data.expenses.map((expense: any) => 
@@ -112,7 +112,7 @@ export default function BudgetBusiness() {
 
   return {
     billingAvailable: () => {
-      const optionsUpdated = { ...options }
+      const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
       optionsUpdated.xaxis.categories = [context.filterYear]
       const series = context.billingAvailable
       return {
@@ -121,7 +121,8 @@ export default function BudgetBusiness() {
       }
     },
     monthlyInvoices: () => {
-      const optionsUpdated = { ...options }
+      const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
+      optionsUpdated.colors = ['#affc41']
       optionsUpdated.xaxis.categories = context.monthlyInvoices.months
       const series = [{
         name: 'Receita',
@@ -134,7 +135,8 @@ export default function BudgetBusiness() {
       }
     },
     monthlyExpenses: () => {
-      const optionsUpdated = { ...options }
+      const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
+      optionsUpdated.colors = ['#ef233c']
       optionsUpdated.xaxis.categories = context.monthlyExpenses.months
       const series = [{
         name: 'Despesa',
@@ -147,7 +149,8 @@ export default function BudgetBusiness() {
       }
     },
     monthlyRelationInvoicesExpenses: () => {
-      const optionsUpdated = { ...options }
+      const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
+      optionsUpdated.colors = ['#affc41', '#ef233c']
       optionsUpdated.xaxis.categories = context.monthlyExpenses.months
       const series = [
         {
@@ -166,7 +169,8 @@ export default function BudgetBusiness() {
       }
     },
     expensesByCategories: () => {
-      const optionsUpdated = { ...options }
+      const optionsUpdated: CustomOptions = JSON.parse(JSON.stringify(options))
+      optionsUpdated.colors = ['#ef233c']
       optionsUpdated.xaxis.categories = context.expensesByCategories.categories
       const series = [{
         name: 'Categoria',
