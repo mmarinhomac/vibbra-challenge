@@ -4,7 +4,7 @@ import { MdCheckBox } from '@react-icons/all-files/md/MdCheckBox'
 
 interface ICheckbox {
   id: string
-  label: string
+  label?: string
   onChange: ({ id, value } : { id: string, value: boolean }) => any
 }
 
@@ -34,7 +34,9 @@ export default function Checkbox({
         <MdCheckBoxOutlineBlank />
         <MdCheckBox />
       </label>
-      <span>{label}</span>
+      {label && (
+        <span>{label}</span>
+      )}
     </Container>
   )
 }

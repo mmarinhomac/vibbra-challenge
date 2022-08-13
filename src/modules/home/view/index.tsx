@@ -63,6 +63,37 @@ function HomeView() {
           />
         </CardChart>
       </BiRowContent>
+      <BiRowContent>
+        <CardChart>
+          <Chart 
+            type="bar" 
+            options={billingAvailable().options} 
+            series={billingAvailable().series} 
+            width='100%' 
+            height={180} 
+          />
+        </CardChart>
+        <CardChart>
+          <Chart 
+            type="bar" 
+            options={monthlyInvoices().options} 
+            series={monthlyInvoices().series} 
+            width='100%' 
+            height={180} 
+          />
+        </CardChart>
+      </BiRowContent>
+      <BiRowContent>
+        <CardChart>
+          <Chart 
+            type="bar" 
+            options={billingAvailable().options} 
+            series={billingAvailable().series} 
+            width='100%' 
+            height={180} 
+          />
+        </CardChart>
+      </BiRowContent>
     </Container>
   )
 }

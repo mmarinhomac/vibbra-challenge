@@ -24,17 +24,18 @@ export const ContentHeader = styled(HStack).attrs({
 
 export const Line = styled.div`
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: rgba(0, 0, 0, 0.15);
   margin: 1.5rem 0 1rem;
 `
 
 export const BiRowContent = styled.div`
   width: 100%;
+  margin-top: 1.5rem;
 
   display: grid;
-  grid-template-columns: repeat(2, calc(50% - 0.5rem));
-  grid-gap: 1rem;
+  grid-template-columns: repeat(2, calc(50% - 0.75rem));
+  grid-gap: 1.5rem;
 `
 
 export const CardChart = styled.div`
