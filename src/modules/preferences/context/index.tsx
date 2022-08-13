@@ -1,12 +1,14 @@
 import { createContext, useContext, useState } from 'react'
 
 interface ICompany {
+  id: string
   companyRegister: string
   name: string
   socialReason: string
 }
 
 interface ICategory {
+  id: string
   name: string
   description: string
   filed: boolean
@@ -15,8 +17,8 @@ interface ICategory {
 interface IPreferencesContext {
   tabSelected: number,
   setTabSelected: React.Dispatch<React.SetStateAction<number>>,
-  currentBilling: number,
-  setCurrentBilling: React.Dispatch<React.SetStateAction<number>>,
+  maximumBillingLimit: number,
+  setMaximumBillingLimit: React.Dispatch<React.SetStateAction<number>>,
   notifications: string[],
   setNotifications: React.Dispatch<React.SetStateAction<string[]>>,
   companyList: ICompany[],
@@ -32,17 +34,19 @@ interface IPreferencesProvider {
 const initialState : IPreferencesContext = {
   tabSelected: 0,
   setTabSelected: () => {},
-  currentBilling: 0,
-  setCurrentBilling: () => {},
+  maximumBillingLimit: 0,
+  setMaximumBillingLimit: () => {},
   notifications: [''],
   setNotifications: () => {},
   companyList: [{
+    id: '1',
     companyRegister: '',
     name: '',
     socialReason: ''
   }],
   setCompanyList: () => {},
   categoryList: [{
+    id: '1',
     name: '',
     description: '',
     filed: false
@@ -57,7 +61,7 @@ export const PreferencesProvider = ({ children } : IPreferencesProvider) => {
   const [tabSelected, setTabSelected] = useState(initialState.tabSelected)
 
   // General
-  const [currentBilling, setCurrentBilling] = useState(initialState.currentBilling)
+  const [maximumBillingLimit, setMaximumBillingLimit] = useState(initialState.maximumBillingLimit)
   const [notifications, setNotifications] = useState(initialState.notifications)
   
   // Records
@@ -68,7 +72,7 @@ export const PreferencesProvider = ({ children } : IPreferencesProvider) => {
     <PreferencesContext.Provider 
       value={{
         tabSelected, setTabSelected,
-        currentBilling, setCurrentBilling,
+        maximumBillingLimit, setMaximumBillingLimit,
         notifications, setNotifications,
         companyList, setCompanyList,
         categoryList, setCategoryList,

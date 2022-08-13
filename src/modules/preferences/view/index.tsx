@@ -1,5 +1,10 @@
 import { withAuth } from "../../../common/hooks/withAuth"
 
+import BudgetBusiness from "../business/budget"
+import PreferencesBusiness from "../business/preferences"
+import CompanyBusiness from "../business/company"
+import CategoryBusiness from "../business/category"
+
 import Button from "../../../common/components/Button"
 import Checkbox from "../../../common/components/Checkbox"
 import Input from "../../../common/components/Input"
@@ -11,11 +16,40 @@ import {
   GeneralContent,
   RecordsContent,
   RecordsContentHeader,
+  Tab,
   VStack,
   HStack,
 } from "./styles"
+import ModuleBusiness from "../business"
 
 function PreferencesView() {
+  const {
+    tabSelected,
+    onChangeTab,
+    onInvokeRecord,
+    tabTitle,
+    onSelectDataList,
+  } = ModuleBusiness()
+  const {
+    maximumBillingLimit,
+    onSaveMaximumBillingLimit
+  } = BudgetBusiness()
+  const {
+    emailActived,
+    smsActived,
+    onChangePreferences,
+  } = PreferencesBusiness()
+  const {
+    companyList,
+    onInvokeNewCompany,
+    onInvokeEditCompany,
+  } = CompanyBusiness()
+  const {
+    categoryList,
+    onInvokeNewCategory,
+    onInvokeEditCategory,
+  } = CategoryBusiness()
+
   return (
     <Container>
       <h2>Gerais</h2>
@@ -24,15 +58,25 @@ function PreferencesView() {
         <VStack>
           <span>Limite máximo de faturamento para MEI</span>
           <HStack>
-            <Input id='limitBilling' onChange={() => {}}/>
-            <Button onClick={() => {}}>Salvar</Button>
+            <Input id='limitBilling' initialValue={maximumBillingLimit} onChange={() => {}}/>
+            <Button onClick={onSaveMaximumBillingLimit}>Salvar</Button>
           </HStack>
         </VStack>
         <VStack>
           <span>Notificações</span>
           <HStack>
-            <Checkbox id='emailNotification' label='E-mail' onChange={() => {}}/>
-            <Checkbox id='smsNotification' label='SMS' onChange={() => {}}/>
+            <Checkbox
+              id='emailNotification' 
+              initialValue={emailActived}
+              label='E-mail' 
+              onChange={() => onChangePreferences('email')}
+            />
+            <Checkbox
+              id='smsNotification' 
+              initialValue={smsActived}
+              label='SMS' 
+              onChange={() => onChangePreferences('sms')}
+            />
           </HStack>
         </VStack>
       </GeneralContent>
@@ -42,37 +86,24 @@ function PreferencesView() {
       <RecordsContent>
         <RecordsContentHeader>
           <div>
-            <button>Empresas</button>
-            <button>Categorias</button>
+            <Tab isSelect={tabSelected === 0} onClick={onChangeTab}>Empresas</Tab>
+            <Tab isSelect={tabSelected === 1} onClick={onChangeTab}>Categorias</Tab>
           </div>
 
-          <Button onClick={() => {}}>Nova Empresa</Button>
+          <Button 
+            onClick={() => 
+              onInvokeRecord(tabSelected, onInvokeNewCompany, onInvokeNewCategory)
+            }
+          >
+            {tabTitle}
+          </Button>
         </RecordsContentHeader>
 
         <List 
-          onEdit={() => {}}
-          data={[
-            {
-              id: '1,',
-              title: 'Empresa 01',
-              subTitle: '75.890.985/0001-77'
-            },
-            {
-              id: '2,',
-              title: 'Empresa 01',
-              subTitle: '75.890.985/0001-77'
-            },
-            {
-              id: '3,',
-              title: 'Empresa 01',
-              subTitle: '75.890.985/0001-77'
-            },
-            {
-              id: '4,',
-              title: 'Empresa 01',
-              subTitle: '75.890.985/0001-77'
-            }
-          ]}
+          onEdit={() => 
+            onInvokeRecord(tabSelected, onInvokeEditCompany, onInvokeEditCategory)
+          }
+          data={onSelectDataList(tabSelected, companyList, categoryList)}
         />
       </RecordsContent>
     </Container>

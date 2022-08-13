@@ -9,12 +9,16 @@ export default function BudgetBusiness() {
 
   const [initialRender, setInitialRender] = useState(true)
 
+  const onSaveMaximumBillingLimit = () => {
+    console.log('onSaveMaximumBillingLimit')
+  }
+
   // Handle initial data
   useEffect(() => {
     if (initialRender) {
       getBudgetRequest()
         .then((data: any) => {
-          console.log(data)
+          context.setMaximumBillingLimit(data.maximumBillingLimit)
         })
     }
   }, [initialRender, context])
@@ -22,5 +26,7 @@ export default function BudgetBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
+    maximumBillingLimit: String(context.maximumBillingLimit),
+    onSaveMaximumBillingLimit
   }
 }

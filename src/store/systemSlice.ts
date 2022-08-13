@@ -24,7 +24,7 @@ const initialState: SystemState = {
     modalActived: false,
     modalTitle: null,
     modalFields: null,
-    modalAction: () => null,
+    modalAction: () => {},
   },
 }
 

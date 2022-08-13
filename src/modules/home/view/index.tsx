@@ -44,8 +44,8 @@ function HomeView() {
         />
 
         <HStack>
-          <Button onClick={() => onInvokeNewInvoice()}>Nova Nota Fiscal</Button>
-          <Button onClick={() => onInvokeNewExpense()}>Nova Despesa</Button>
+          <Button onClick={onInvokeNewInvoice}>Nova Nota Fiscal</Button>
+          <Button onClick={onInvokeNewExpense}>Nova Despesa</Button>
         </HStack>
       </ContentHeader>
 

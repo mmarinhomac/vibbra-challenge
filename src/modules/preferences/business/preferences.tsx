@@ -9,12 +9,16 @@ export default function PreferencesBusiness() {
 
   const [initialRender, setInitialRender] = useState(true)
 
+  const onChangePreferences = (option : string) => {
+    console.log('onChangePreferences', option)
+  }
+
   // Handle initial data
   useEffect(() => {
     if (initialRender) {
       getPreferencesRequest()
         .then((data: any) => {
-          console.log(data)
+          context.setNotifications(data.notification)
         })
     }
   }, [initialRender, context])
@@ -22,5 +26,8 @@ export default function PreferencesBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
+    emailActived: context.notifications.indexOf('email') !== -1,
+    smsActived: context.notifications.indexOf('sms') !== -1,
+    onChangePreferences
   }
 }

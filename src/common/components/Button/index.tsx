@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from "react"
 
 interface IButton {
-  onClick: MouseEventHandler<HTMLButtonElement>
+  onClick: MouseEventHandler<HTMLButtonElement> | (() => any)
   children: string | React.ReactNode
 }
 

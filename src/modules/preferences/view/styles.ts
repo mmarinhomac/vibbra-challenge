@@ -53,15 +53,16 @@ export const RecordsContent = styled(VStack)`
 export const RecordsContentHeader = styled(HStack)`
   justify-content: space-between;
   margin-bottom: 1rem;
+`
 
-  > div {
-    button {
-      color: #fff;
-      padding: 0.5rem 1.5rem;
-      background: #6c757d;
-    }
-    button:nth-of-type(2) {
-      background: #343a40;
-    }
-  }
+interface ITab {
+  isSelect: boolean
+}
+
+export const Tab = styled.button<ITab>`
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  background: #6c757d;
+
+  ${({ isSelect }) => isSelect && 'background: #343a40;'}
 `

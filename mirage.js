@@ -42,7 +42,7 @@ export function makeServer() {
             year: '2022'
           },
         ],
-        preferences: [{ notification: ['email', 'sms'] }],
+        preferences: [{ notification: ['email'] }],
         companies: [
           {
             companyRegister: '75890985000177',
@@ -177,7 +177,7 @@ export function makeServer() {
       })
 
       this.get('/preferences', schema => {
-        const { attrs } = schema.first('preferences')
+        const { attrs } = schema.first('preference')
         return attrs
       })
 

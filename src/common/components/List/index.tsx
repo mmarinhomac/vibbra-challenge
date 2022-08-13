@@ -1,14 +1,14 @@
 import { AiFillEdit } from '@react-icons/all-files/ai/AiFillEdit'
 import { AiTwotoneDelete } from '@react-icons/all-files/ai/AiTwotoneDelete'
 
-type Record = {
+export type TypeRecord = {
   id: string,
   title: string,
   subTitle: string
 }
 
 interface IList {
-  data: Record[]
+  data: TypeRecord[] | null | undefined
   onEdit?: ({ id } : { id: string }) => any
   onDelete?: ({ id } : { id: string }) => any
 }
@@ -25,7 +25,7 @@ export default function List({
 } : IList) {
   return (
     <Container>
-      {data.map(item => (
+      {data && data.map(item => (
         <Item key={item.id}>
           <div>
             <strong>{item.title}</strong>

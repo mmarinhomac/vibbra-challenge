@@ -1,4 +1,5 @@
 import Head from 'next/head'
+
 import { PreferencesProvider } from '../modules/preferences/context'
 
 import PreferencesView from '../modules/preferences/view'

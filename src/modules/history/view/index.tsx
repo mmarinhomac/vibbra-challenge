@@ -4,15 +4,15 @@ import List from "../../../common/components/List"
 import Button from "../../../common/components/Button"
 
 import { Container } from "./styles"
-import { RecordsContentHeader as ContainerHeader } from "../../preferences/view/styles"
+import { RecordsContentHeader as ContainerHeader, Tab } from "../../preferences/view/styles"
 
 function HistoryView() {
   return (
     <Container>
       <ContainerHeader>
         <div>
-          <button>Notas Fiscais</button>
-          <button>Despesas</button>
+          <Tab isSelect={true} onClick={() => {}}>Notas Fiscais</Tab>
+          <Tab isSelect={false} onClick={() => {}}>Despesas</Tab>
         </div>
 
         <Button onClick={() => {}}>Nova Nota Fiscal</Button>
