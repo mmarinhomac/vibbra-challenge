@@ -38,7 +38,7 @@ export default function Input({
       setCheckInitialValue(initialValue)
       setValue(initialValue)
     }
-  }, [initialValue])
+  }, [initialValue, checkInitialValue])
 
   return (
     <Container>

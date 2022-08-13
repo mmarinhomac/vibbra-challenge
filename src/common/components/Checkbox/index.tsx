@@ -7,7 +7,7 @@ interface ICheckbox {
   id: string
   label?: string
   onChange: ({ id, value } : { id: string, value: boolean }) => any
-  initialValue: boolean
+  initialValue?: boolean
 }
 
 import {
@@ -30,12 +30,13 @@ export default function Checkbox({
 
   useEffect(() => {
     if (
+      initialValue &&
       initialValue !== checkInitialValue
     ) {
       setCheckInitialValue(initialValue)
       setChecked(initialValue)
     }
-  }, [initialValue])
+  }, [initialValue, checkInitialValue])
 
   return (
     <Container isChecked={checked}>
