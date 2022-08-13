@@ -4,13 +4,13 @@ import HistoryView from '../modules/history/view'
 
 const History = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>History</title>
       </Head>
 
       <HistoryView />
-    </div>
+    </>
   )
 }
 

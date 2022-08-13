@@ -6,7 +6,7 @@ import AuthView from '../modules/auth/view'
 
 const Auth = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Auth</title>
       </Head>
@@ -14,7 +14,7 @@ const Auth = () => {
       <AuthProvider>
         <AuthView />
       </AuthProvider>
-    </div>
+    </>
   )
 }
 

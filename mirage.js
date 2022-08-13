@@ -35,7 +35,13 @@ export function makeServer() {
         ],
 
         // Business Mock
-        budgets: [{ maximumBillingLimit: 81000, currentRevenue: 17750 }],
+        budgets: [
+          { 
+            maximumBillingLimit: 81000, 
+            currentRevenue: 17750,
+            year: '2022'
+          },
+        ],
         preferences: [{ notification: ['email', 'sms'] }],
         companies: [
           {

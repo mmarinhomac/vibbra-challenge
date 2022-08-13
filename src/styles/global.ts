@@ -61,11 +61,6 @@ export default createGlobalStyle`
     align-items: center;
   }
 
-  #__next > div {
-    height: 100%;
-    width: 100%;
-  }
-
   body {
     -webkit-font-smoothing: antialiased;
   }

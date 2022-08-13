@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoMdLogOut } from '@react-icons/all-files/io/IoMdLogOut'
+import { FiLogOut } from '@react-icons/all-files/fi/FiLogOut'
 
 import MenuBusiness from "../business"
 
@@ -45,7 +45,7 @@ export default function MenuView() {
              de Lançamentos</BtnAction>
             <BtnAction onClick={onLogout}>
               <span>Sair</span>
-              <IoMdLogOut />
+              <FiLogOut />
             </BtnAction>
           </HStack>
         </Header>
