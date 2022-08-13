@@ -3,7 +3,7 @@ import api from './index'
 interface ICreateAuthRequest {
   email: string
   name: string
-  cnpj: string
+  companyRegister: string
   companyName: string
   phone: string
   id: string

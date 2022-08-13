@@ -17,7 +17,7 @@ export default function Checkbox({
   label,
   onChange
 } : ICheckbox) {
-  const [checked, setChecked] = useState<boolean>(false)
+  const [checked, setChecked] = useState(false)
 
   const onUpdate = (value : boolean) => {
     setChecked(value)

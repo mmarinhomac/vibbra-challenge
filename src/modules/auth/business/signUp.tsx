@@ -29,7 +29,7 @@ export default function SignUpBusiness() {
     if (
       context.signUpFormData.email.length === 0 &&
       context.signUpFormData.name.length === 0 &&
-      context.signUpFormData.cnpj.length === 0 &&
+      context.signUpFormData.companyRegister.length === 0 &&
       context.signUpFormData.companyName.length === 0 &&
       context.signUpFormData.phone.length === 0 &&
       context.signUpFormData.password.length === 0

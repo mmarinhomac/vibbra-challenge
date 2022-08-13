@@ -19,7 +19,7 @@ export function makeServer() {
           {
             email: 'srvibbraneo@gmail.com',
             name: 'Sr. Vibbraneo',
-            cnpj: '18804552000118',
+            companyRegister: '18804552000118',
             companyName: 'Vibbraneo Transportes Ltda',
             phone: '1137616136',
             password: '123456',
@@ -27,7 +27,7 @@ export function makeServer() {
           {
             email: 'test',
             name: 'Sr. Vibbraneo',
-            cnpj: '18804552000118',
+            companyRegister: '18804552000118',
             companyName: 'Vibbraneo Transportes Ltda',
             phone: '1137616136',
             password: '1',
@@ -45,17 +45,17 @@ export function makeServer() {
         preferences: [{ notification: ['email', 'sms'] }],
         companies: [
           {
-            cnpj: '75890985000177',
+            companyRegister: '75890985000177',
             name: 'Lara e Márcio Restaurante ME',
             socialReason: 'Lara e Márcio Restaurante ME'
           },
           {
-            cnpj: '71170884000170',
+            companyRegister: '71170884000170',
             name: 'Emanuel e Larissa Marcenaria Ltda',
             socialReason: 'Emanuel e Larissa Marcenaria Ltda'
           },
           {
-            cnpj: '31303008000150',
+            companyRegister: '31303008000150',
             name: 'Antonio e Antonio Buffet Ltda',
             socialReason: 'Antonio e Antonio Buffet Ltda'
           }

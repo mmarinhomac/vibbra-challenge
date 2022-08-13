@@ -45,7 +45,7 @@ export default function SignUpView() {
 
         <Input id='email' type='text' placeholder='Email' onChange={onUpdateForm}/>
         <Input id='name' type='text' placeholder='Nome' onChange={onUpdateForm}/>
-        <Input id='cnpj' type='text' placeholder='CNPJ' onChange={onUpdateForm}/>
+        <Input id='companyRegister' type='text' placeholder='CNPJ' onChange={onUpdateForm}/>
         <Input id='companyName' type='text' placeholder='Nome da Empresa' onChange={onUpdateForm}/>
         <Input id='phone' type='text' placeholder='Telefone' onChange={onUpdateForm}/>
         <Input id='password' type='password' placeholder='Senha' onChange={onUpdateForm}/>

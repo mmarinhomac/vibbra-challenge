@@ -12,7 +12,7 @@ export default function MenuBusiness() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const [initialRender, setInitialRender] = useState<boolean>(true)
+  const [initialRender, setInitialRender] = useState(true)
 
   const onMenuChoice = ({ number } : { number: number }) => {
     context.setMenuSelection(number)

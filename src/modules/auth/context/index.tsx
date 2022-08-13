@@ -8,7 +8,7 @@ type ISignInFormData = {
 type ISignUpFormData = {
   email: string | ''
   name: string | ''
-  cnpj: string | ''
+  companyRegister: string | ''
   companyName: string | ''
   phone: string | ''
   password: string | ''
@@ -38,7 +38,7 @@ const initialState = {
   signUpFormData: {
     email: '',
     name: '',
-    cnpj: '',
+    companyRegister: '',
     companyName: '',
     phone: '',
     password: '',

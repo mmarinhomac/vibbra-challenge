@@ -19,6 +19,7 @@ import {
   CardChart,
 } from './styles'
 import InvoiceBusiness from '../business/invoice'
+import ExpenseBusiness from '../business/expense'
 
 function HomeView() {
   const {
@@ -28,6 +29,9 @@ function HomeView() {
   const {
     onInvokeNewInvoice
   } = InvoiceBusiness()
+  const {
+    onInvokeNewExpense
+  } = ExpenseBusiness()
 
   return (
     <Container>
@@ -41,7 +45,7 @@ function HomeView() {
 
         <HStack>
           <Button onClick={() => onInvokeNewInvoice()}>Nova Nota Fiscal</Button>
-          <Button onClick={() => {}}>Nova Despesa</Button>
+          <Button onClick={() => onInvokeNewExpense()}>Nova Despesa</Button>
         </HStack>
       </ContentHeader>
 

@@ -55,7 +55,7 @@ const options : CustomOptions = {
 export default function BudgetBusiness() {
   const context = useHomeContext()
 
-  const [initialRender, setInitialRender] = useState<boolean>(true)
+  const [initialRender, setInitialRender] = useState(true)
 
   // Handle initial data
   useEffect(() => {

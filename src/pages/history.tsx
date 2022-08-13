@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { HistoryProvider } from '../modules/history/context'
 
 import HistoryView from '../modules/history/view'
 
@@ -9,7 +10,9 @@ const History = () => {
         <title>History</title>
       </Head>
 
-      <HistoryView />
+      <HistoryProvider>
+        <HistoryView />
+      </HistoryProvider>
     </>
   )
 }
