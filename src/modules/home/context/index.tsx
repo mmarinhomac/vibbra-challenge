@@ -15,11 +15,6 @@ interface IMonthlyExpenses {
   data: number[]
 }
 
-interface IMonthlyRelationInvoicesExpenses {
-  months: string[]
-  data: number[]
-}
-
 interface IExpensesByCategories {
   categories: string[]
   data: number[]
@@ -34,8 +29,6 @@ interface IHomeContext {
   setMonthlyInvoices: React.Dispatch<React.SetStateAction<IMonthlyInvoices>>
   monthlyExpenses: IMonthlyExpenses
   setMonthlyExpenses: React.Dispatch<React.SetStateAction<IMonthlyExpenses>>
-  monthlyRelationInvoicesExpenses: IMonthlyRelationInvoicesExpenses
-  setMonthlyRelationInvoicesExpenses: React.Dispatch<React.SetStateAction<IMonthlyRelationInvoicesExpenses>>
   expensesByCategories: IExpensesByCategories
   setExpensesByCategories: React.Dispatch<React.SetStateAction<IExpensesByCategories>>
 }
@@ -62,11 +55,6 @@ const initialState = {
     data: [0]
   },
   setMonthlyExpenses: () => {},
-  monthlyRelationInvoicesExpenses: {
-    months: [''],
-    data: [0]
-  },
-  setMonthlyRelationInvoicesExpenses: () => {},
   expensesByCategories: {
     categories: [''],
     data: [0]
@@ -81,7 +69,6 @@ export const HomeProvider = ({ children } : IHomeProvider) => {
   const [billingAvailable, setBillingAvailable] = useState(initialState.billingAvailable)
   const [monthlyInvoices, setMonthlyInvoices] = useState(initialState.monthlyInvoices)
   const [monthlyExpenses, setMonthlyExpenses] = useState(initialState.monthlyExpenses)
-  const [monthlyRelationInvoicesExpenses, setMonthlyRelationInvoicesExpenses] = useState(initialState.monthlyRelationInvoicesExpenses)
   const [expensesByCategories, setExpensesByCategories] = useState(initialState.expensesByCategories)
 
   return (
@@ -91,7 +78,6 @@ export const HomeProvider = ({ children } : IHomeProvider) => {
         billingAvailable, setBillingAvailable,
         monthlyInvoices, setMonthlyInvoices,
         monthlyExpenses, setMonthlyExpenses,
-        monthlyRelationInvoicesExpenses, setMonthlyRelationInvoicesExpenses,
         expensesByCategories, setExpensesByCategories,
       }}
     >

@@ -24,13 +24,16 @@ import ExpenseBusiness from '../business/expense'
 function HomeView() {
   const {
     billingAvailable,
-    monthlyInvoices
+    monthlyInvoices,
+    monthlyExpenses,
+    monthlyRelationInvoicesExpenses,
+    expensesByCategories,
   } = BudgetBusiness()
   const {
-    onInvokeNewInvoice
+    onInvokeNewInvoice,
   } = InvoiceBusiness()
   const {
-    onInvokeNewExpense
+    onInvokeNewExpense,
   } = ExpenseBusiness()
 
   return (
@@ -75,8 +78,8 @@ function HomeView() {
         <CardChart>
           <Chart 
             type="bar" 
-            options={billingAvailable().options} 
-            series={billingAvailable().series} 
+            options={monthlyExpenses().options} 
+            series={monthlyExpenses().series} 
             width='100%' 
             height={180} 
           />
@@ -84,8 +87,8 @@ function HomeView() {
         <CardChart>
           <Chart 
             type="bar" 
-            options={monthlyInvoices().options} 
-            series={monthlyInvoices().series} 
+            options={monthlyRelationInvoicesExpenses().options} 
+            series={monthlyRelationInvoicesExpenses().series} 
             width='100%' 
             height={180} 
           />
@@ -95,8 +98,8 @@ function HomeView() {
         <CardChart>
           <Chart 
             type="bar" 
-            options={billingAvailable().options} 
-            series={billingAvailable().series} 
+            options={expensesByCategories().options} 
+            series={expensesByCategories().series} 
             width='100%' 
             height={180} 
           />

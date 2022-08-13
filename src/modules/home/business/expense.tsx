@@ -12,43 +12,45 @@ export default function ExpenseBusiness() {
     console.log('submit')
   }
 
+  const onInvokeNewExpense = () => dispatch(setModal({
+    state: true,
+    title: 'Registrar Nota Despesa',
+    fields: [
+      {
+        id: 'company',
+        label: 'Empresa',
+        onChange: onFormUpdate,
+      },
+      {
+        id: 'category',
+        label: 'Categoria',
+        onChange: onFormUpdate,
+      },
+      {
+        id: 'value',
+        label: 'Valor da despesa',
+        onChange: onFormUpdate,
+      },
+      {
+        id: 'name',
+        label: 'Nome da despesa',
+        onChange: onFormUpdate,
+      },
+      {
+        id: 'payDay',
+        label: 'Data de pagamento',
+        onChange: onFormUpdate,
+      },
+      {
+        id: 'createAt',
+        label: 'Data de competência',
+        onChange: onFormUpdate,
+      }
+    ],
+    onAction: onSubmit
+  }))
+
   return {
-    onInvokeNewExpense: () => dispatch(setModal({
-      state: true,
-      title: 'Registrar Nota Despesa',
-      fields: [
-        {
-          id: 'company',
-          label: 'Empresa',
-          onChange: onFormUpdate,
-        },
-        {
-          id: 'category',
-          label: 'Categoria',
-          onChange: onFormUpdate,
-        },
-        {
-          id: 'value',
-          label: 'Valor da despesa',
-          onChange: onFormUpdate,
-        },
-        {
-          id: 'name',
-          label: 'Nome da despesa',
-          onChange: onFormUpdate,
-        },
-        {
-          id: 'payDay',
-          label: 'Data de pagamento',
-          onChange: onFormUpdate,
-        },
-        {
-          id: 'createAt',
-          label: 'Data de competência',
-          onChange: onFormUpdate,
-        }
-      ],
-      onAction: onSubmit
-    }))
+    onInvokeNewExpense
   }
 }

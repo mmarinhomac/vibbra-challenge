@@ -5,6 +5,7 @@ import { useHomeContext } from '../context';
 
 import { getBudgetRequest } from '../../../services/budget'
 import { getInvoicesRequest } from '../../../services/invoice';
+import { getExpensesRequest } from '../../../services/expense';
 
 interface xaxis {
   type: "category" | "datetime" | "numeric" | undefined
@@ -86,6 +87,24 @@ export default function BudgetBusiness() {
             data: series
           })
         })
+      getExpensesRequest()
+        .then((data: any) => {
+          const months = data.expenses.map((expense: any) => 
+            String(expense.createdAt).split('/')[1])
+          const categories = data.expenses.map((expense: any) => 
+            expense.categorieName)
+          const series = data.expenses.map((expense: any) => 
+            expense.value)
+
+          context.setMonthlyExpenses({
+            months,
+            data: series
+          })
+          context.setExpensesByCategories({
+            categories,
+            data: series
+          })
+        })
     }
   }, [initialRender, context])
 
@@ -94,9 +113,8 @@ export default function BudgetBusiness() {
   return {
     billingAvailable: () => {
       const optionsUpdated = { ...options }
-      optionsUpdated.xaxis.categories = ['2022']
+      optionsUpdated.xaxis.categories = [context.filterYear]
       const series = context.billingAvailable
-      // console.log(optionsUpdated)
       return {
         options: optionsUpdated,
         series
@@ -115,14 +133,50 @@ export default function BudgetBusiness() {
         series
       }
     },
-    // monthlyExpenses: () => {
-    //   
-    // },
-    // monthlyRelationInvoicesExpenses: () => {
-    //   
-    // },
-    // expensesByCategories: () => {
-    //   
-    // },
+    monthlyExpenses: () => {
+      const optionsUpdated = { ...options }
+      optionsUpdated.xaxis.categories = context.monthlyExpenses.months
+      const series = [{
+        name: 'Despesa',
+        data: context.monthlyExpenses.data
+      }]
+
+      return {
+        options: optionsUpdated,
+        series
+      }
+    },
+    monthlyRelationInvoicesExpenses: () => {
+      const optionsUpdated = { ...options }
+      optionsUpdated.xaxis.categories = context.monthlyExpenses.months
+      const series = [
+        {
+          name: 'Receita',
+          data: context.monthlyInvoices.data
+        },
+        {
+          name: 'Despesa',
+          data: context.monthlyExpenses.data
+        }
+      ]
+
+      return {
+        options: optionsUpdated,
+        series
+      }
+    },
+    expensesByCategories: () => {
+      const optionsUpdated = { ...options }
+      optionsUpdated.xaxis.categories = context.expensesByCategories.categories
+      const series = [{
+        name: 'Categoria',
+        data: context.expensesByCategories.data
+      }]
+
+      return {
+        options: optionsUpdated,
+        series
+      }
+    },
   }
 }
