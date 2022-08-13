@@ -5,9 +5,11 @@ import { useRouter } from 'next/router'
 import { useMenuContext } from '../context'
 
 import { selectAuthState, setLogged } from '../../../store/authSlice'
+import { selectUserData } from '../../../store/userSlice'
 
 export default function MenuBusiness() {
   const authState = useSelector(selectAuthState)
+  const userData = useSelector(selectUserData)
   const context = useMenuContext()
   const dispatch = useDispatch()
   const router = useRouter()
@@ -30,12 +32,13 @@ export default function MenuBusiness() {
   // Handle initial data
   useEffect(() => {
     if (initialRender) {
-      const userName = localStorage.getItem('userName')
-      context.setHelloTitle(`Hello ${userName}`)
+      const userName = userData.user.name || localStorage.getItem('userName')
+      if (userName) {
+        context.setHelloTitle(`Hello ${userName}`)
+        setInitialRender(false)
+      }
     }
-  }, [initialRender, context])
-
-  useEffect(() => setInitialRender(false), [])
+  }, [initialRender, userData, context])
 
   return {
     authState,

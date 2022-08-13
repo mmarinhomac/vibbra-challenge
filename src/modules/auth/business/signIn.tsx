@@ -7,6 +7,7 @@ import { useAuthContext } from '../context'
 import { setLogged } from "../../../store/authSlice"
 
 import { createAuthRequest } from '../../../services/auth'
+import { setUser } from "../../../store/userSlice"
 
 const signInErrorsTypes = {
   'COD999': 'COD999 - Contate Administrador do Sistema',
@@ -64,6 +65,9 @@ export default function SignInBusiness() {
       localStorage.setItem('userName', name)
       
       dispatch(setLogged(true))
+      dispatch(setUser({
+        name
+      }))
       router.push('/')
     } catch (error : any) {
       // @refactor - add Toast Message
