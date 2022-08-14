@@ -225,7 +225,6 @@ export function makeServer() {
 
       this.post('/user', (schema, request) => {
         const body = JSON.parse(request.requestBody)
-        console.log(request.requestBody)
         const { attrs } = schema.users.create(body)
 
         delete attrs.password

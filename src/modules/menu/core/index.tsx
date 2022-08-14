@@ -45,7 +45,7 @@ export default function MenuCore() {
     const path = window.location.pathname
     const paths = ['/', '/preferences', '/history']
     const isPresent = context.menuSelection === paths.indexOf(path)
-    console.log('menu', path, isPresent)
+
     if (!isPresent) context.setMenuSelection(paths.indexOf(path))
   }, [context])
 
