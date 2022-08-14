@@ -1,13 +1,20 @@
+import { TypeRecord } from "../../../common/components/List"
+
 import { useHistoryContext } from "../context"
 
 export default function HistoryBusiness() {
   const context = useHistoryContext()
 
-  const onChangeTab = () => context.setTabSelected(oldState => oldState === 0 ? 1 : 0)
+  const onChangeTab = (tab : number) => context.setTabSelected(tab)
 
   const onInvokeRecord = (tab: number, handleOne: () => any, handleTwo: () => any) => {
     if (tab === 0) return handleOne()
     handleTwo()
+  }
+
+  const onSelectDataList = (tab: number, dataOne: TypeRecord[], dataTwo: TypeRecord[]) => {
+    if (tab === 0) return dataOne
+    return dataTwo
   }
 
   return {
@@ -15,5 +22,6 @@ export default function HistoryBusiness() {
     tabTitle: context.tabSelected === 0 ? 'Nova Nota Fiscal' : 'Nova Despesa',
     onChangeTab,
     onInvokeRecord,
+    onSelectDataList,
   }
 }

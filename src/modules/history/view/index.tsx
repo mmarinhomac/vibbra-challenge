@@ -16,11 +16,14 @@ function HistoryView() {
     tabTitle,
     onChangeTab,
     onInvokeRecord,
+    onSelectDataList,
   } = HistoryBusiness()
   const {
+    invoiceList,
     onInvokeNewInvoice,
   } = InvoiceBusiness()
   const {
+    expenseList,
     onInvokeNewExpense,
   } = ExpenseBusiness()
 
@@ -28,8 +31,8 @@ function HistoryView() {
     <Container>
       <ContainerHeader>
         <div>
-          <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab()}>Notas Fiscais</Tab>
-          <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab()}>Despesas</Tab>
+          <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>Notas Fiscais</Tab>
+          <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>Despesas</Tab>
         </div>
 
         <Button 
@@ -44,28 +47,7 @@ function HistoryView() {
       <List
         onEdit={() => {}}
         onDelete={() => {}}
-        data={[
-          {
-            id: '1,',
-            title: 'Empresa 01',
-            subTitle: '75.890.985/0001-77'
-          },
-          {
-            id: '2,',
-            title: 'Empresa 01',
-            subTitle: '75.890.985/0001-77'
-          },
-          {
-            id: '3,',
-            title: 'Empresa 01',
-            subTitle: '75.890.985/0001-77'
-          },
-          {
-            id: '4,',
-            title: 'Empresa 01',
-            subTitle: '75.890.985/0001-77'
-          }
-        ]}
+        data={onSelectDataList(tabSelected, invoiceList, expenseList)}
       />
     </Container>
   )

@@ -1,9 +1,17 @@
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+
+import { useHistoryContext } from "../context"
 
 import { setModal } from "../../../store/systemSlice"
 
+import { getInvoicesRequest } from "../../../services/invoice"
+
 export default function InvoiceBusiness() {
+  const context = useHistoryContext()
   const dispatch = useDispatch()
+
+  const [initialRender, setInitialRender] = useState(true)
 
   const onFormUpdate = ({ id, value } : { id: string, value: string }) => {
     console.log({ id, value })
@@ -47,8 +55,21 @@ export default function InvoiceBusiness() {
       onAction: onSubmit,
     }))
   }
+
+  // Handle initial data
+  useEffect(() => {
+    if (initialRender) {
+      getInvoicesRequest()
+        .then((data: any) => {
+          context.setInvoiceList(data.invoices)
+        })
+    }
+  }, [initialRender, context])
+
+  useEffect(() => setInitialRender(false), [])
   
   return {
+    invoiceList: context.invoiceList.map(item => ({ id: item.id, title: item.description, subTitle: String(item.value) })),
     onInvokeNewInvoice,
   }
 }

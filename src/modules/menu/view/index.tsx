@@ -22,7 +22,9 @@ export default function MenuView() {
     <>
       {authState && (
         <Header>
-          <h1>{helloTitle}</h1>
+          <button onClick={() => onMenuChoice({ number: 0})}>
+            <h1>{helloTitle}</h1>
+          </button>
 
           <HStack>
             <BtnAction 

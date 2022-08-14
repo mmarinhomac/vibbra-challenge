@@ -24,7 +24,7 @@ export default function SignUpView() {
   return (
     <Container>
       <Form onSubmit={onSubmit}>
-        <h1>Bem-vindo de volta!</h1>
+        <h1>Bem-vindo!</h1>
         <span>Crie sua conta.</span>
 
         <BtnSocialLogin>

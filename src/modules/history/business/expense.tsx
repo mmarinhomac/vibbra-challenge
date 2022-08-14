@@ -1,9 +1,17 @@
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+
+import { useHistoryContext } from "../context"
 
 import { setModal } from "../../../store/systemSlice"
 
+import { getExpensesRequest } from "../../../services/expense"
+
 export default function ExpenseBusiness() {
+  const context = useHistoryContext()
   const dispatch = useDispatch()
+
+  const [initialRender, setInitialRender] = useState(true)
 
   const onFormUpdate = ({ id, value } : { id: string, value: string }) => {
     console.log({ id, value })
@@ -48,7 +56,20 @@ export default function ExpenseBusiness() {
     }))
   }
 
+  // Handle initial data
+  useEffect(() => {
+    if (initialRender) {
+      getExpensesRequest()
+        .then((data: any) => {
+          context.setExpenseList(data.expenses)
+        })
+    }
+  }, [initialRender, context])
+
+  useEffect(() => setInitialRender(false), [])
+
   return {
+    expenseList: context.expenseList.map(item => ({ id: item.id, title: item.name, subTitle: String(item.value) })),
     onInvokeNewExpense,
   }
 }

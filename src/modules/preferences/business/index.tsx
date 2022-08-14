@@ -5,7 +5,7 @@ import { usePreferencesContext } from "../context"
 export default function ModuleBusiness() {
   const context = usePreferencesContext()
 
-  const onChangeTab = () => context.setTabSelected(oldState => oldState === 0 ? 1 : 0)
+  const onChangeTab = (tab : number) => context.setTabSelected(tab)
 
   const onInvokeRecord = (tab: number, handleOne: () => any, handleTwo: () => any) => {
     if (tab === 0) return handleOne()

@@ -86,8 +86,8 @@ function PreferencesView() {
       <RecordsContent>
         <RecordsContentHeader>
           <div>
-            <Tab isSelect={tabSelected === 0} onClick={onChangeTab}>Empresas</Tab>
-            <Tab isSelect={tabSelected === 1} onClick={onChangeTab}>Categorias</Tab>
+            <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>Empresas</Tab>
+            <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>Categorias</Tab>
           </div>
 
           <Button 
