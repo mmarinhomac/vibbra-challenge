@@ -20,7 +20,7 @@ export const Header = styled(HStack).attrs({
     font-weight: 700;
   }
 
-  & > div {
+  > div {
     gap: 2.5rem;
   }
 `

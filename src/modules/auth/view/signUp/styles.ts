@@ -30,12 +30,12 @@ export const Form = styled(VStack).attrs({
   width: 100%;
   max-width: 440px;
 
-  & > h1 {
+  > h1 {
     font-size: 1.6rem;
     font-weight: 700;
   }
 
-  & > span {
+  > span {
     font-size: 0.9rem;
     font-weight: 400;
     margin: 0.1rem 0 2rem;
@@ -60,7 +60,7 @@ export const Form = styled(VStack).attrs({
     }
   }
 
-  & > div > input {
+  > div > input {
     margin-bottom: 1.2rem;
   }
 

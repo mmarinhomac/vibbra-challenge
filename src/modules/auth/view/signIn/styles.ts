@@ -25,17 +25,17 @@ export const Container = styled.main`
 `
 
 export const Form = styled(VStack).attrs({
-  as: 'form'
+  as: 'form',
 })`
   width: 100%;
   max-width: 440px;
 
-  & > h1 {
+  > h1 {
     font-size: 1.6rem;
     font-weight: 700;
   }
 
-  & > span {
+  > span {
     font-size: 0.9rem;
     font-weight: 400;
     margin: 0.1rem 0 2rem;
@@ -60,7 +60,7 @@ export const Form = styled(VStack).attrs({
     }
   }
 
-  & > div > input {
+  > div > input {
     margin-bottom: 1.2rem;
   }
 
@@ -70,11 +70,11 @@ export const Form = styled(VStack).attrs({
 `
 
 interface IBtnSocialLogin {
-  iconColor?: string;
+  iconColor?: string
 }
 
 export const BtnSocialLogin = styled(HStack).attrs({
-  as: 'button'
+  as: 'button',
 })<IBtnSocialLogin>`
   white-space: nowrap;
   justify-content: center;

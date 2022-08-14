@@ -1,50 +1,13 @@
 import React from 'react'
-import { FiLogOut } from '@react-icons/all-files/fi/FiLogOut'
 
-import MenuCore from '../core'
+import { MenuProvider } from '../context'
 
-import { Header, HStack, BtnAction } from './styles'
+import MenuView from './menu'
 
-export default function MenuView() {
-  const { authState, helloTitle, menuSelection, onLogout, onMenuChoice } =
-    MenuCore()
-
+export default function MenuLayout() {
   return (
-    <>
-      {authState && (
-        <Header>
-          {helloTitle && (
-            <button onClick={() => onMenuChoice({ number: 0 })}>
-              <h1>{helloTitle}</h1>
-            </button>
-          )}
-
-          <HStack>
-            <BtnAction
-              isSelect={menuSelection === 0}
-              onClick={() => onMenuChoice({ number: 0 })}
-            >
-              Home
-            </BtnAction>
-            <BtnAction
-              isSelect={menuSelection === 1}
-              onClick={() => onMenuChoice({ number: 1 })}
-            >
-              Preferências
-            </BtnAction>
-            <BtnAction
-              isSelect={menuSelection === 2}
-              onClick={() => onMenuChoice({ number: 2 })}
-            >
-              Histórico de Lançamentos
-            </BtnAction>
-            <BtnAction onClick={onLogout}>
-              <span>Sair</span>
-              <FiLogOut />
-            </BtnAction>
-          </HStack>
-        </Header>
-      )}
-    </>
+    <MenuProvider>
+      <MenuView />
+    </MenuProvider>
   )
 }

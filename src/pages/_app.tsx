@@ -4,7 +4,7 @@ import { wrapper } from '../store'
 
 import GlobalStyle from '../styles/global'
 
-import MenuLayout from '../modules/menu/view/menuLayout'
+import Menu from '../modules/menu/view'
 import Modal from '../common/components/Modal'
 
 import { makeServer } from '../../mirage'
@@ -13,11 +13,12 @@ makeServer()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <MenuLayout>
+    <>
+      <Menu />
       <GlobalStyle />
       <Component {...pageProps} />
       <Modal />
-    </MenuLayout>
+    </>
   )
 }
 

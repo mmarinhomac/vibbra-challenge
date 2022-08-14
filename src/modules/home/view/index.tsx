@@ -59,7 +59,7 @@ function HomeView() {
               options={billingAvailable().options}
               series={billingAvailable().series}
               width="100%"
-              height={180}
+              height="100%"
             />
           </CardChart>
         )}
@@ -70,7 +70,7 @@ function HomeView() {
               options={monthlyInvoices().options}
               series={monthlyInvoices().series}
               width="100%"
-              height={180}
+              height="100%"
             />
           </CardChart>
         )}
@@ -83,7 +83,7 @@ function HomeView() {
               options={monthlyExpenses().options}
               series={monthlyExpenses().series}
               width="100%"
-              height={180}
+              height="100%"
             />
           </CardChart>
         )}
@@ -94,7 +94,7 @@ function HomeView() {
               options={monthlyRelationInvoicesExpenses().options}
               series={monthlyRelationInvoicesExpenses().series}
               width="100%"
-              height={180}
+              height="100%"
             />
           </CardChart>
         )}
@@ -107,7 +107,7 @@ function HomeView() {
               options={expensesByCategories().options}
               series={expensesByCategories().series}
               width="100%"
-              height={280}
+              height="100%"
             />
           </CardChart>
         )}
