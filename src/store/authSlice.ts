@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AppState } from "../store"
+import { AppState } from '../store'
 
 export interface AuthState {
   authState: boolean
@@ -11,13 +11,13 @@ const initialState: AuthState = {
 }
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setLogged(state: AuthState, action: PayloadAction<boolean>) {
       state.authState = action.payload
     },
-  }
+  },
 })
 
 export const { setLogged } = authSlice.actions

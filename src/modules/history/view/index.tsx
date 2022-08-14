@@ -1,14 +1,17 @@
-import { withAuth } from "../../../common/hooks/withAuth"
+import { withAuth } from '../../../common/hooks/withAuth'
 
-import HistoryBusiness from "../business"
-import InvoiceBusiness from "../business/invoice"
-import ExpenseBusiness from "../business/expense"
+import HistoryCore from '../core'
+import InvoiceBusiness from '../hooks/business/invoice'
+import ExpenseBusiness from '../hooks/business/expense'
 
-import List from "../../../common/components/List"
-import Button from "../../../common/components/Button"
+import List from '../../../common/components/List'
+import Button from '../../../common/components/Button'
 
-import { Container } from "./styles"
-import { RecordsContentHeader as ContainerHeader, Tab } from "../../preferences/view/styles"
+import { Container } from './styles'
+import {
+  RecordsContentHeader as ContainerHeader,
+  Tab,
+} from '../../preferences/view/styles'
 
 function HistoryView() {
   const {
@@ -17,26 +20,24 @@ function HistoryView() {
     onChangeTab,
     onInvokeRecord,
     onSelectDataList,
-  } = HistoryBusiness()
-  const {
-    invoiceList,
-    onInvokeNewInvoice,
-  } = InvoiceBusiness()
-  const {
-    expenseList,
-    onInvokeNewExpense,
-  } = ExpenseBusiness()
+  } = HistoryCore()
+  const { invoiceList, onInvokeNewInvoice } = InvoiceBusiness()
+  const { expenseList, onInvokeNewExpense } = ExpenseBusiness()
 
   return (
     <Container>
       <ContainerHeader>
         <div>
-          <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>Notas Fiscais</Tab>
-          <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>Despesas</Tab>
+          <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>
+            Notas Fiscais
+          </Tab>
+          <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>
+            Despesas
+          </Tab>
         </div>
 
-        <Button 
-          onClick={() => 
+        <Button
+          onClick={() =>
             onInvokeRecord(tabSelected, onInvokeNewInvoice, onInvokeNewExpense)
           }
         >

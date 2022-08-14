@@ -10,12 +10,10 @@ interface ICreateAuthRequest {
   token: string
 }
 
-export const createAuthRequest = ({
-  body
-} : {
-  body: any
-}) => new Promise<ICreateAuthRequest>((resolve, reject) => {
-  api.post('/auth', body)
-    .then(({ data }) => resolve(data))
-    .catch((err) => reject(err))
-})
+export const createAuthRequest = ({ body }: { body: any }) =>
+  new Promise<ICreateAuthRequest>((resolve, reject) => {
+    api
+      .post('/auth', body)
+      .then(({ data }) => resolve(data))
+      .catch((err) => reject(err))
+  })

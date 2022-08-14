@@ -4,10 +4,10 @@ export const HStack = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-` 
+`
 
 export const Header = styled(HStack).attrs({
-  as: 'header'
+  as: 'header',
 })`
   width: 100%;
   max-width: 1200px;
@@ -30,7 +30,7 @@ interface IBtnAction {
 }
 
 export const BtnAction = styled(HStack).attrs({
-  as: 'button'
+  as: 'button',
 })<IBtnAction>`
   gap: 0.3rem;
 

@@ -21,64 +21,74 @@ interface IExpensesByCategories {
 }
 
 interface IHomeContext {
-  filterYear: string
-  setFilterYear: React.Dispatch<React.SetStateAction<string>>
-  billingAvailable: IBillingAvailable[]
-  setBillingAvailable: React.Dispatch<React.SetStateAction<IBillingAvailable[]>>
-  monthlyInvoices: IMonthlyInvoices
-  setMonthlyInvoices: React.Dispatch<React.SetStateAction<IMonthlyInvoices>>
-  monthlyExpenses: IMonthlyExpenses
-  setMonthlyExpenses: React.Dispatch<React.SetStateAction<IMonthlyExpenses>>
-  expensesByCategories: IExpensesByCategories
-  setExpensesByCategories: React.Dispatch<React.SetStateAction<IExpensesByCategories>>
+  filterYear: string | null
+  setFilterYear: React.Dispatch<React.SetStateAction<string | null>>
+  billingAvailable: IBillingAvailable[] | null
+  setBillingAvailable: React.Dispatch<
+    React.SetStateAction<IBillingAvailable[] | null>
+  >
+  monthlyInvoices: IMonthlyInvoices | null
+  setMonthlyInvoices: React.Dispatch<
+    React.SetStateAction<IMonthlyInvoices | null>
+  >
+  monthlyExpenses: IMonthlyExpenses | null
+  setMonthlyExpenses: React.Dispatch<
+    React.SetStateAction<IMonthlyExpenses | null>
+  >
+  expensesByCategories: IExpensesByCategories | null
+  setExpensesByCategories: React.Dispatch<
+    React.SetStateAction<IExpensesByCategories | null>
+  >
 }
 
 interface IHomeProvider {
   children: React.ReactElement
 }
 
-const initialState : IHomeContext = {
-  filterYear: '',
+const initialState: IHomeContext = {
+  filterYear: null,
   setFilterYear: () => {},
-  billingAvailable: [{
-    name: 'string',
-    data: [0]
-  }],
+  billingAvailable: null,
   setBillingAvailable: () => {},
-  monthlyInvoices: {
-    months: [''],
-    data: [0]
-  },
+  monthlyInvoices: null,
   setMonthlyInvoices: () => {},
-  monthlyExpenses: {
-    months: [''],
-    data: [0]
-  },
+  monthlyExpenses: null,
   setMonthlyExpenses: () => {},
-  expensesByCategories: {
-    categories: [''],
-    data: [0]
-  },
+  expensesByCategories: null,
   setExpensesByCategories: () => {},
 }
 
 const HomeContext = createContext<IHomeContext>(initialState)
 
-export const HomeProvider = ({ children } : IHomeProvider) => {
+export const HomeProvider = ({ children }: IHomeProvider) => {
+  // Dashboard
   const [filterYear, setFilterYear] = useState(initialState.filterYear)
-  const [billingAvailable, setBillingAvailable] = useState(initialState.billingAvailable)
-  const [monthlyInvoices, setMonthlyInvoices] = useState(initialState.monthlyInvoices)
-  const [monthlyExpenses, setMonthlyExpenses] = useState(initialState.monthlyExpenses)
-  const [expensesByCategories, setExpensesByCategories] = useState(initialState.expensesByCategories)
+  const [billingAvailable, setBillingAvailable] = useState(
+    initialState.billingAvailable
+  )
+  const [monthlyInvoices, setMonthlyInvoices] = useState(
+    initialState.monthlyInvoices
+  )
+  const [monthlyExpenses, setMonthlyExpenses] = useState(
+    initialState.monthlyExpenses
+  )
+  const [expensesByCategories, setExpensesByCategories] = useState(
+    initialState.expensesByCategories
+  )
 
   return (
-    <HomeContext.Provider 
+    <HomeContext.Provider
       value={{
-        filterYear, setFilterYear,
-        billingAvailable, setBillingAvailable,
-        monthlyInvoices, setMonthlyInvoices,
-        monthlyExpenses, setMonthlyExpenses,
-        expensesByCategories, setExpensesByCategories,
+        filterYear,
+        setFilterYear,
+        billingAvailable,
+        setBillingAvailable,
+        monthlyInvoices,
+        setMonthlyInvoices,
+        monthlyExpenses,
+        setMonthlyExpenses,
+        expensesByCategories,
+        setExpensesByCategories,
       }}
     >
       {children}

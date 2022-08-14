@@ -30,8 +30,8 @@ export const ContainerOptions = styled.div`
   background: #fff;
   padding: 0.4rem 0;
   z-index: 999999;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1); 
-  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
 
   > button {
     width: 100%;

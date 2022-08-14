@@ -6,33 +6,28 @@ import { MdCheckBox } from '@react-icons/all-files/md/MdCheckBox'
 interface ICheckbox {
   id: string
   label?: string
-  onChange: ({ id, value } : { id: string, value: boolean }) => any
+  onChange: ({ id, value }: { id: string; value: boolean }) => any
   initialValue?: boolean
 }
 
-import {
-  Container
-} from './styles'
+import { Container } from './styles'
 
 export default function Checkbox({
   id,
   label,
   onChange,
-  initialValue
-} : ICheckbox) {
+  initialValue,
+}: ICheckbox) {
   const [checkInitialValue, setCheckInitialValue] = useState(false)
   const [checked, setChecked] = useState(false)
 
-  const onUpdate = (value : boolean) => {
+  const onUpdate = (value: boolean) => {
     setChecked(value)
-    onChange({ id, value})
+    onChange({ id, value })
   }
 
   useEffect(() => {
-    if (
-      initialValue &&
-      initialValue !== checkInitialValue
-    ) {
+    if (initialValue && initialValue !== checkInitialValue) {
       setCheckInitialValue(initialValue)
       setChecked(initialValue)
     }
@@ -41,16 +36,14 @@ export default function Checkbox({
   return (
     <Container isChecked={checked}>
       <label>
-        <input 
+        <input
           type="checkbox"
           onChange={(evt) => onUpdate(evt.target.checked)}
         />
         <MdCheckBoxOutlineBlank />
         <MdCheckBox />
       </label>
-      {label && (
-        <span>{label}</span>
-      )}
+      {label && <span>{label}</span>}
     </Container>
   )
 }

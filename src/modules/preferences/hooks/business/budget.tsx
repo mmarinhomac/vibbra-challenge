@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { usePreferencesContext } from "../context"
+import { usePreferencesContext } from '../../context'
 
-import { getBudgetRequest } from "../../../services/budget"
+import { getBudgetRequest } from '../../../../services/budget'
 
 export default function BudgetBusiness() {
   const context = usePreferencesContext()
@@ -16,17 +16,16 @@ export default function BudgetBusiness() {
   // Handle initial data
   useEffect(() => {
     if (initialRender) {
-      getBudgetRequest()
-        .then((data: any) => {
-          context.setMaximumBillingLimit(data.maximumBillingLimit)
-        })
+      getBudgetRequest().then((data: any) => {
+        context.setMaximumBillingLimit(data.maximumBillingLimit)
+      })
     }
   }, [initialRender, context])
-  
+
   useEffect(() => setInitialRender(false), [])
 
   return {
     maximumBillingLimit: String(context.maximumBillingLimit),
-    onSaveMaximumBillingLimit
+    onSaveMaximumBillingLimit,
   }
 }

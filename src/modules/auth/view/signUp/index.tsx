@@ -1,7 +1,7 @@
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle'
 import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
 
-import SignUpBusiness from '../../business/signUp'
+import SignUpBusiness from '../../hooks/business/signUp'
 
 import Input from '../../../../common/components/Input'
 
@@ -15,11 +15,7 @@ import {
 } from './styles'
 
 export default function SignUpView() {
-  const {
-    changeFormMode,
-    onUpdateForm,
-    onSubmit
-  } = SignUpBusiness()
+  const { changeFormMode, onUpdateForm, onSubmit } = SignUpBusiness()
 
   return (
     <Container>
@@ -43,14 +39,44 @@ export default function SignUpView() {
           <div></div>
         </HStack>
 
-        <Input id='email' type='text' placeholder='Email' onChange={onUpdateForm}/>
-        <Input id='name' type='text' placeholder='Nome' onChange={onUpdateForm}/>
-        <Input id='companyRegister' type='text' placeholder='CNPJ' onChange={onUpdateForm}/>
-        <Input id='companyName' type='text' placeholder='Nome da Empresa' onChange={onUpdateForm}/>
-        <Input id='phone' type='text' placeholder='Telefone' onChange={onUpdateForm}/>
-        <Input id='password' type='password' placeholder='Senha' onChange={onUpdateForm}/>
+        <Input
+          id="email"
+          type="text"
+          placeholder="Email"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="name"
+          type="text"
+          placeholder="Nome"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="companyRegister"
+          type="text"
+          placeholder="CNPJ"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="companyName"
+          type="text"
+          placeholder="Nome da Empresa"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="phone"
+          type="text"
+          placeholder="Telefone"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="password"
+          type="password"
+          placeholder="Senha"
+          onChange={onUpdateForm}
+        />
 
-        <BtnSubmit type='submit'>Cadastrar-se</BtnSubmit>
+        <BtnSubmit type="submit">Cadastrar-se</BtnSubmit>
 
         <BtnSignUp onClick={changeFormMode}>
           Já possuí uma conta? <strong>Entre aqui</strong>

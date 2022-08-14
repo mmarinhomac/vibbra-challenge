@@ -1,16 +1,17 @@
-import { withAuth } from "../../../common/hooks/withAuth"
+import { withAuth } from '../../../common/hooks/withAuth'
 
-import BudgetBusiness from "../business/budget"
-import PreferencesBusiness from "../business/preferences"
-import CompanyBusiness from "../business/company"
-import CategoryBusiness from "../business/category"
+import PreferencesCore from '../core'
+import BudgetBusiness from '../hooks/business/budget'
+import PreferencesBusiness from '../hooks/business/preferences'
+import CompanyBusiness from '../hooks/business/company'
+import CategoryBusiness from '../hooks/business/category'
 
-import Button from "../../../common/components/Button"
-import Checkbox from "../../../common/components/Checkbox"
-import Input from "../../../common/components/Input"
-import List from "../../../common/components/List"
+import Button from '../../../common/components/Button'
+import Checkbox from '../../../common/components/Checkbox'
+import Input from '../../../common/components/Input'
+import List from '../../../common/components/List'
 
-import { 
+import {
   Container,
   Line,
   GeneralContent,
@@ -19,8 +20,7 @@ import {
   Tab,
   VStack,
   HStack,
-} from "./styles"
-import ModuleBusiness from "../business"
+} from './styles'
 
 function PreferencesView() {
   const {
@@ -29,26 +29,14 @@ function PreferencesView() {
     onInvokeRecord,
     tabTitle,
     onSelectDataList,
-  } = ModuleBusiness()
-  const {
-    maximumBillingLimit,
-    onSaveMaximumBillingLimit
-  } = BudgetBusiness()
-  const {
-    emailActived,
-    smsActived,
-    onChangePreferences,
-  } = PreferencesBusiness()
-  const {
-    companyList,
-    onInvokeNewCompany,
-    onInvokeEditCompany,
-  } = CompanyBusiness()
-  const {
-    categoryList,
-    onInvokeNewCategory,
-    onInvokeEditCategory,
-  } = CategoryBusiness()
+  } = PreferencesCore()
+  const { maximumBillingLimit, onSaveMaximumBillingLimit } = BudgetBusiness()
+  const { emailActived, smsActived, onChangePreferences } =
+    PreferencesBusiness()
+  const { companyList, onInvokeNewCompany, onInvokeEditCompany } =
+    CompanyBusiness()
+  const { categoryList, onInvokeNewCategory, onInvokeEditCategory } =
+    CategoryBusiness()
 
   return (
     <Container>
@@ -58,7 +46,11 @@ function PreferencesView() {
         <VStack>
           <span>Limite máximo de faturamento para MEI</span>
           <HStack>
-            <Input id='limitBilling' initialValue={maximumBillingLimit} onChange={() => {}}/>
+            <Input
+              id="limitBilling"
+              initialValue={maximumBillingLimit}
+              onChange={() => {}}
+            />
             <Button onClick={onSaveMaximumBillingLimit}>Salvar</Button>
           </HStack>
         </VStack>
@@ -66,15 +58,15 @@ function PreferencesView() {
           <span>Notificações</span>
           <HStack>
             <Checkbox
-              id='emailNotification' 
+              id="emailNotification"
               initialValue={emailActived}
-              label='E-mail' 
+              label="E-mail"
               onChange={() => onChangePreferences('email')}
             />
             <Checkbox
-              id='smsNotification' 
+              id="smsNotification"
               initialValue={smsActived}
-              label='SMS' 
+              label="SMS"
               onChange={() => onChangePreferences('sms')}
             />
           </HStack>
@@ -86,22 +78,34 @@ function PreferencesView() {
       <RecordsContent>
         <RecordsContentHeader>
           <div>
-            <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>Empresas</Tab>
-            <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>Categorias</Tab>
+            <Tab isSelect={tabSelected === 0} onClick={() => onChangeTab(0)}>
+              Empresas
+            </Tab>
+            <Tab isSelect={tabSelected === 1} onClick={() => onChangeTab(1)}>
+              Categorias
+            </Tab>
           </div>
 
-          <Button 
-            onClick={() => 
-              onInvokeRecord(tabSelected, onInvokeNewCompany, onInvokeNewCategory)
+          <Button
+            onClick={() =>
+              onInvokeRecord(
+                tabSelected,
+                onInvokeNewCompany,
+                onInvokeNewCategory
+              )
             }
           >
             {tabTitle}
           </Button>
         </RecordsContentHeader>
 
-        <List 
-          onEdit={() => 
-            onInvokeRecord(tabSelected, onInvokeEditCompany, onInvokeEditCategory)
+        <List
+          onEdit={() =>
+            onInvokeRecord(
+              tabSelected,
+              onInvokeEditCompany,
+              onInvokeEditCategory
+            )
           }
           data={onSelectDataList(tabSelected, companyList, categoryList)}
         />

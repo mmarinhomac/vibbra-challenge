@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
-import { selectModalState } from "../../../store/systemSlice";
+import { selectModalState } from '../../../store/systemSlice'
 
-import ModalContent from "./ModalContent";
+import ModalContent from './ModalContent'
 
 export default function Modal() {
   const modalActived = useSelector(selectModalState)

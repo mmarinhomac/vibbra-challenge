@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Router from 'next/router'
 
 import { getStorageToken } from '../utils/auth'
 
-import { selectAuthState, setLogged } from "../../store/authSlice"
+import { selectAuthState, setLogged } from '../../store/authSlice'
 
-export function withAuth(WrapperComponent : React.FunctionComponent<any>) {
-  const PrivateRouter = (props : any) => {
+export function withAuth(WrapperComponent: React.FunctionComponent<any>) {
+  const PrivateRouter = (props: any) => {
     const authState = useSelector(selectAuthState)
     const dispatch = useDispatch()
 
     const [accepted, setAccepted] = useState(false)
-    
+
     useEffect(() => {
       const token = getStorageToken()
 

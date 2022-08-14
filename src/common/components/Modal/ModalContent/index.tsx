@@ -5,12 +5,7 @@ import { selectModalData, setModal } from '../../../../store/systemSlice'
 import Button from '../../Button'
 import Input from '../../Input'
 
-import {
-  Container,
-  Fade,
-  Content,
-  ContentHeader,
-} from './styles'
+import { Container, Fade, Content, ContentHeader } from './styles'
 
 export default function ModalContent() {
   const modalData = useSelector(selectModalData)
@@ -20,7 +15,7 @@ export default function ModalContent() {
 
   return (
     <Container>
-      <Fade onClick={onClose}/>
+      <Fade onClick={onClose} />
 
       <Content>
         <ContentHeader>
@@ -30,10 +25,10 @@ export default function ModalContent() {
           </button>
         </ContentHeader>
 
-        {modalData.modalFields?.map(field => (
+        {modalData.modalFields?.map((field) => (
           <div key={field.id}>
             <strong>{field.label}</strong>
-            <Input id={field.id} onChange={modalData.modalFieldOnChange}/>
+            <Input id={field.id} onChange={modalData.modalFieldOnChange} />
           </div>
         ))}
 

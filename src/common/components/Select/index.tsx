@@ -6,21 +6,12 @@ interface ISelect {
   id: string
   label: string
   options: string[]
-  onChange: ({ id, value} : { id: string, value: string }) => any
+  onChange: ({ id, value }: { id: string; value: string }) => any
 }
 
-import { 
-  Container,
-  Fade,
-  ContainerOptions
-} from "./styles"
+import { Container, Fade, ContainerOptions } from './styles'
 
-export default function Select({
-  id,
-  label,
-  options,
-  onChange
-} : ISelect) {
+export default function Select({ id, label, options, onChange }: ISelect) {
   const [actived, setActived] = useState(false)
 
   const onUpdate = (option: string) => {
@@ -30,20 +21,17 @@ export default function Select({
 
   return (
     <Container>
-      <button onClick={() => setActived(bool => !bool)}>
+      <button onClick={() => setActived((bool) => !bool)}>
         {label}
         <GoChevronDown />
       </button>
 
       {actived && (
         <>
-          <Fade onClick={() => setActived(false)}/>
+          <Fade onClick={() => setActived(false)} />
           <ContainerOptions>
-            {options.map(option => (
-              <button 
-                key={option}
-                onClick={() => onUpdate(option)}
-              >
+            {options.map((option) => (
+              <button key={option} onClick={() => onUpdate(option)}>
                 {option}
               </button>
             ))}

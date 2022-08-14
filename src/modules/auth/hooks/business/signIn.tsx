@@ -1,16 +1,15 @@
-
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 
-import { useAuthContext } from '../context'
+import { useAuthContext } from '../../context'
 
-import { setLogged } from "../../../store/authSlice"
+import { setLogged } from '../../../../store/authSlice'
 
-import { createAuthRequest } from '../../../services/auth'
-import { setUser } from "../../../store/userSlice"
+import { createAuthRequest } from '../../../../services/auth'
+import { setUser } from '../../../../store/userSlice'
 
 const signInErrorsTypes = {
-  'COD999': 'COD999 - Contate Administrador do Sistema',
+  COD999: 'COD999 - Contate Administrador do Sistema',
 }
 
 export default function SignInBusiness() {
@@ -20,23 +19,29 @@ export default function SignInBusiness() {
 
   const changeFormMode = () => context.setSignInFormMode(false)
 
-  const onUpdateForm = ({ 
-    id, 
-    value
-  } : { 
-    id: string, 
-    value: any
-  }) => context.setSignInFormData(oldState => ({
-    ...oldState,
-    [id]: value
-  }))
+  const onUpdateForm = ({
+    id,
+    value,
+  }: {
+    id: string
+    value: string | boolean
+  }) => {
+    if (id && value) {
+      context.setSignInFormData((oldState: any) => ({
+        ...oldState,
+        [id]: value,
+      }))
+    }
+  }
 
   const validatedFormData = () => {
     let validated = true
     const errors = []
 
     if (
+      context?.signInFormData?.email &&
       context.signInFormData.email.length === 0 &&
+      context?.signInFormData?.password &&
       context.signInFormData.password.length === 0
     ) {
       validated = false
@@ -46,7 +51,7 @@ export default function SignInBusiness() {
     return { validated, errors }
   }
 
-  const onSubmit = async (event : any) => {
+  const onSubmit = async (event: any) => {
     event.preventDefault()
     const { validated, errors } = validatedFormData()
 
@@ -54,25 +59,27 @@ export default function SignInBusiness() {
     if (!validated) return console.log(errors)
 
     try {
-      const {
-        token,
-        id,
-        name
-      } = await createAuthRequest({ body: context.signInFormData })
+      const { token, id, name } = await createAuthRequest({
+        body: context.signInFormData,
+      })
 
       localStorage.setItem('token', token)
       localStorage.setItem('userId', id)
       localStorage.setItem('userName', name)
-      
+
       dispatch(setLogged(true))
-      dispatch(setUser({
-        name
-      }))
+      dispatch(
+        setUser({
+          name,
+        })
+      )
       router.push('/')
-    } catch (error : any) {
+    } catch (error: any) {
       // @refactor - add Toast Message
       const errors = error?.response?.data?.errors
-      const message = Array.isArray(errors) ? errors[0] : signInErrorsTypes['COD999']
+      const message = Array.isArray(errors)
+        ? errors[0]
+        : signInErrorsTypes['COD999']
       console.log(message)
     }
   }
@@ -80,6 +87,6 @@ export default function SignInBusiness() {
   return {
     changeFormMode,
     onUpdateForm,
-    onSubmit
+    onSubmit,
   }
 }

@@ -4,37 +4,32 @@ interface IInput {
   id: string
   type?: string
   placeholder?: string
-  onChange: ({ id, value } : { id: string, value: string }) => any
+  onChange: ({ id, value }: { id: string; value: string }) => any
   initialValue?: string
 }
 
-import {
-  Container
-} from './styles'
+import { Container } from './styles'
 
 export default function Input({
   id,
   type = 'text',
   placeholder,
   onChange,
-  initialValue
-} : IInput) {
+  initialValue,
+}: IInput) {
   const [checkInitialValue, setCheckInitialValue] = useState('')
   const [value, setValue] = useState('')
 
-  const onUpdate = ({ value } : { value: string }) => {
+  const onUpdate = ({ value }: { value: string }) => {
     setValue(value)
     onChange({
       id,
-      value
+      value,
     })
   }
 
   useEffect(() => {
-    if (
-      initialValue &&
-      initialValue !== checkInitialValue
-    ) {
+    if (initialValue && initialValue !== checkInitialValue) {
       setCheckInitialValue(initialValue)
       setValue(initialValue)
     }
@@ -42,8 +37,8 @@ export default function Input({
 
   return (
     <Container>
-      <input 
-        type={type} 
+      <input
+        type={type}
         placeholder={placeholder}
         value={value}
         onChange={(evt) => onUpdate({ value: evt.target.value })}

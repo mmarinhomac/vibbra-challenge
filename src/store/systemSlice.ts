@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AppState } from "../store"
+import { AppState } from '../store'
 
 type ModalField = {
-  id: string,
+  id: string
   label: string
 }
 
@@ -11,7 +11,7 @@ interface Modal {
   modalActived: boolean
   modalTitle: string | null
   modalFields: ModalField[] | null
-  modalFieldOnChange: ({ id, value } : { id: string, value: string }) => any
+  modalFieldOnChange: ({ id, value }: { id: string; value: string }) => any
   modalAction: () => any
 }
 
@@ -30,16 +30,19 @@ const initialState: SystemState = {
 }
 
 export const systemSlice = createSlice({
-  name: "system",
+  name: 'system',
   initialState,
   reducers: {
-    setModal(state: SystemState, action: PayloadAction<{
-      state: boolean,
-      title?: string,
-      fields?: ModalField[],
-      onChange?: ({ id, value } : { id: string, value: string }) => any,
-      onAction?: () => any
-    }>) {
+    setModal(
+      state: SystemState,
+      action: PayloadAction<{
+        state: boolean
+        title?: string
+        fields?: ModalField[]
+        onChange?: ({ id, value }: { id: string; value: string }) => any
+        onAction?: () => any
+      }>
+    ) {
       if (
         action.payload.state &&
         action.payload.title &&
@@ -60,12 +63,13 @@ export const systemSlice = createSlice({
         state.modal.modalAction = initialState.modal.modalAction
       }
     },
-  }
+  },
 })
 
 export const { setModal } = systemSlice.actions
 
-export const selectModalState = (state: AppState) => state.system.modal.modalActived
+export const selectModalState = (state: AppState) =>
+  state.system.modal.modalActived
 export const selectModalData = (state: AppState) => state.system.modal
 
 export default systemSlice.reducer

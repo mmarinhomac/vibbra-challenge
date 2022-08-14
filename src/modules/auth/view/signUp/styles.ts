@@ -25,7 +25,7 @@ export const Container = styled.main`
 `
 
 export const Form = styled(VStack).attrs({
-  as: "form"
+  as: 'form',
 })`
   width: 100%;
   max-width: 440px;
@@ -70,11 +70,11 @@ export const Form = styled(VStack).attrs({
 `
 
 interface IBtnSocialLogin {
-  iconColor?: string;
+  iconColor?: string
 }
 
 export const BtnSocialLogin = styled(HStack).attrs({
-  as: 'button'
+  as: 'button',
 })<IBtnSocialLogin>`
   white-space: nowrap;
   justify-content: center;

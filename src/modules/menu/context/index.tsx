@@ -11,24 +11,26 @@ interface IMenuProvider {
   children: React.ReactElement
 }
 
-const initialState : IMenuContext = {
-  helloTitle: '', 
+const initialState: IMenuContext = {
+  helloTitle: '',
   setHelloTitle: () => {},
-  menuSelection: 0, 
-  setMenuSelection: () => {}
+  menuSelection: 0,
+  setMenuSelection: () => {},
 }
 
 const MenuContext = createContext<IMenuContext>(initialState)
 
-export const MenuProvider = ({ children } : IMenuProvider) => {
+export const MenuProvider = ({ children }: IMenuProvider) => {
   const [helloTitle, setHelloTitle] = useState(initialState.helloTitle)
   const [menuSelection, setMenuSelection] = useState(initialState.menuSelection)
 
   return (
-    <MenuContext.Provider 
+    <MenuContext.Provider
       value={{
-        helloTitle, setHelloTitle,
-        menuSelection, setMenuSelection
+        helloTitle,
+        setHelloTitle,
+        menuSelection,
+        setMenuSelection,
       }}
     >
       {children}

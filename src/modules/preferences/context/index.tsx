@@ -31,51 +31,62 @@ interface IPreferencesProvider {
   children: React.ReactElement
 }
 
-const initialState : IPreferencesContext = {
+const initialState: IPreferencesContext = {
   tabSelected: 0,
   setTabSelected: () => {},
   maximumBillingLimit: 0,
   setMaximumBillingLimit: () => {},
   notifications: [''],
   setNotifications: () => {},
-  companyList: [{
-    id: '1',
-    companyRegister: '',
-    name: '',
-    socialReason: ''
-  }],
+  companyList: [
+    {
+      id: '1',
+      companyRegister: '',
+      name: '',
+      socialReason: '',
+    },
+  ],
   setCompanyList: () => {},
-  categoryList: [{
-    id: '1',
-    name: '',
-    description: '',
-    filed: false
-  }],
+  categoryList: [
+    {
+      id: '1',
+      name: '',
+      description: '',
+      filed: false,
+    },
+  ],
   setCategoryList: () => {},
 }
 
 const PreferencesContext = createContext<IPreferencesContext>(initialState)
 
-export const PreferencesProvider = ({ children } : IPreferencesProvider) => {
+export const PreferencesProvider = ({ children }: IPreferencesProvider) => {
   // Switches
   const [tabSelected, setTabSelected] = useState(initialState.tabSelected)
 
   // General
-  const [maximumBillingLimit, setMaximumBillingLimit] = useState(initialState.maximumBillingLimit)
+  const [maximumBillingLimit, setMaximumBillingLimit] = useState(
+    initialState.maximumBillingLimit
+  )
   const [notifications, setNotifications] = useState(initialState.notifications)
-  
+
   // Records
   const [companyList, setCompanyList] = useState(initialState.companyList)
   const [categoryList, setCategoryList] = useState(initialState.categoryList)
 
   return (
-    <PreferencesContext.Provider 
+    <PreferencesContext.Provider
       value={{
-        tabSelected, setTabSelected,
-        maximumBillingLimit, setMaximumBillingLimit,
-        notifications, setNotifications,
-        companyList, setCompanyList,
-        categoryList, setCategoryList,
+        tabSelected,
+        setTabSelected,
+        maximumBillingLimit,
+        setMaximumBillingLimit,
+        notifications,
+        setNotifications,
+        companyList,
+        setCompanyList,
+        categoryList,
+        setCategoryList,
       }}
     >
       {children}
@@ -87,7 +98,9 @@ export const usePreferencesContext = () => {
   const context = useContext(PreferencesContext)
 
   if (!context) {
-    throw new Error('usePreferencesContext must be used within an PreferencesProvider')
+    throw new Error(
+      'usePreferencesContext must be used within an PreferencesProvider'
+    )
   }
 
   return context

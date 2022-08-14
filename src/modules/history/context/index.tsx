@@ -1,24 +1,24 @@
 import { createContext, useContext, useState } from 'react'
 
 type IInvoice = {
-  id: string,
-  companieId: number,
-  value: number,
-  invoiceNumber: number,
-  description: string,
-  createdAt: string,
-  payDay: string,
+  id: string
+  companieId: number
+  value: number
+  invoiceNumber: number
+  description: string
+  createdAt: string
+  payDay: string
 }
 
 type IExpense = {
-  id: string,
-  categorieId: number,
-  categorieName: string,
-  companieId: number,
-  value: number,
-  name: string,
-  createdAt: string,
-  dateRefCompetency: string,
+  id: string
+  categorieId: number
+  categorieName: string
+  companieId: number
+  value: number
+  name: string
+  createdAt: string
+  dateRefCompetency: string
 }
 
 interface IHistoryContext {
@@ -34,35 +34,39 @@ interface IHistoryProvider {
   children: React.ReactElement
 }
 
-const initialState : IHistoryContext = {
+const initialState: IHistoryContext = {
   tabSelected: 0,
   setTabSelected: () => {},
-  invoiceList: [{
-    id: '',
-    companieId: 0,
-    value: 0,
-    invoiceNumber: 0,
-    description: '',
-    createdAt: '',
-    payDay: '',
-  }],
+  invoiceList: [
+    {
+      id: '',
+      companieId: 0,
+      value: 0,
+      invoiceNumber: 0,
+      description: '',
+      createdAt: '',
+      payDay: '',
+    },
+  ],
   setInvoiceList: () => {},
-  expenseList: [{
-    id: '',
-    categorieId: 0,
-    categorieName: '',
-    companieId: 0,
-    value: 0,
-    name: '',
-    createdAt: '',
-    dateRefCompetency: '',
-  }],
+  expenseList: [
+    {
+      id: '',
+      categorieId: 0,
+      categorieName: '',
+      companieId: 0,
+      value: 0,
+      name: '',
+      createdAt: '',
+      dateRefCompetency: '',
+    },
+  ],
   setExpenseList: () => {},
 }
 
 const HistoryContext = createContext<IHistoryContext>(initialState)
 
-export const HistoryProvider = ({ children } : IHistoryProvider) => {
+export const HistoryProvider = ({ children }: IHistoryProvider) => {
   // Switches
   const [tabSelected, setTabSelected] = useState(initialState.tabSelected)
 
@@ -71,11 +75,14 @@ export const HistoryProvider = ({ children } : IHistoryProvider) => {
   const [expenseList, setExpenseList] = useState(initialState.expenseList)
 
   return (
-    <HistoryContext.Provider 
+    <HistoryContext.Provider
       value={{
-        tabSelected, setTabSelected,
-        invoiceList, setInvoiceList,
-        expenseList, setExpenseList,
+        tabSelected,
+        setTabSelected,
+        invoiceList,
+        setInvoiceList,
+        expenseList,
+        setExpenseList,
       }}
     >
       {children}

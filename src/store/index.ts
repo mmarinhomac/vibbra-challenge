@@ -1,9 +1,9 @@
-import { configureStore, Dispatch, AnyAction } from "@reduxjs/toolkit"
-import { createWrapper } from "next-redux-wrapper"
+import { configureStore, Dispatch, AnyAction } from '@reduxjs/toolkit'
+import { createWrapper } from 'next-redux-wrapper'
 
-import { systemSlice } from "./systemSlice"
-import { authSlice } from "./authSlice"
-import { userSlice } from "./userSlice"
+import { systemSlice } from './systemSlice'
+import { authSlice } from './authSlice'
+import { userSlice } from './userSlice'
 
 const makeStore = () =>
   configureStore({
@@ -13,13 +13,14 @@ const makeStore = () =>
       [userSlice.name]: userSlice.reducer,
     },
     devTools: true,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-      serializableCheck: false
-    }),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   })
 
 export type AppStore = ReturnType<typeof makeStore>
-export type AppState = ReturnType<AppStore["getState"]>
+export type AppState = ReturnType<AppStore['getState']>
 export type AppDispatch = Dispatch<AnyAction>
 
 export const wrapper = createWrapper<AppStore>(makeStore)

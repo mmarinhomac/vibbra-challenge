@@ -12,7 +12,7 @@ export const Container = styled.main`
 `
 
 export const ContentHeader = styled(HStack).attrs({
-  as: 'div'
+  as: 'div',
 })`
   margin-top: 1rem;
   justify-content: space-between;
@@ -39,6 +39,6 @@ export const BiRowContent = styled.div`
 
 export const CardChart = styled.div`
   width: 100%;
-  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1); 
-  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
 `

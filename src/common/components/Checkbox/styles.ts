@@ -12,7 +12,7 @@ export const Container = styled.label<IContainer>`
   gap: 8px;
   user-select: none;
   cursor: pointer;
-  
+
   label {
     position: relative;
 

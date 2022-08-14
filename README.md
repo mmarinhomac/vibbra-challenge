@@ -59,7 +59,9 @@ Criei uma API "mockada" com mirageJS com todos os dados de autenticação e neg�
 
 Criei uma arquitetura com foco em separação de dados de negócio das interfaces, a intenção é deixa um hook customizado que é responsável por buscar dados de negócio, formatar, calcular... e então servir dados ou handles para interface limpa
 
-**module/business** Ficam regras de negócios
+**module/core** Regras lógicas de comportamento do app
+<br>
+**module/hooks/business** Regras de negócios
 <br>
 **module/view** Interfaces independentes
 <br>

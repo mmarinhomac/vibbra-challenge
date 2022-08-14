@@ -1,7 +1,7 @@
 import { FcGoogle } from '@react-icons/all-files/fc/FcGoogle'
 import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook'
 
-import SignInBusiness from '../../business/signIn'
+import SignInBusiness from '../../hooks/business/signIn'
 
 import Input from '../../../../common/components/Input'
 import Checkbox from '../../../../common/components/Checkbox'
@@ -17,11 +17,7 @@ import {
 } from './styles'
 
 export default function SignInView() {
-  const {
-    changeFormMode,
-    onUpdateForm,
-    onSubmit
-  } = SignInBusiness()
+  const { changeFormMode, onUpdateForm, onSubmit } = SignInBusiness()
 
   return (
     <Container>
@@ -45,15 +41,29 @@ export default function SignInView() {
           <div></div>
         </HStack>
 
-        <Input id='email' type='text' placeholder='Email' onChange={onUpdateForm}/>
-        <Input id='password' type='password' placeholder='Senha' onChange={onUpdateForm}/>
+        <Input
+          id="email"
+          type="text"
+          placeholder="Email"
+          onChange={onUpdateForm}
+        />
+        <Input
+          id="password"
+          type="password"
+          placeholder="Senha"
+          onChange={onUpdateForm}
+        />
 
         <HStack>
-          <Checkbox id='keepConnected' label='Mantenha-me conectado' onChange={onUpdateForm} />
+          <Checkbox
+            id="keepConnected"
+            label="Mantenha-me conectado"
+            onChange={onUpdateForm}
+          />
           <BtnText>Esqueci minha senha</BtnText>
         </HStack>
 
-        <BtnSubmit type='submit'>Entrar</BtnSubmit>
+        <BtnSubmit type="submit">Entrar</BtnSubmit>
 
         <BtnSignUp onClick={changeFormMode}>
           Não possuí uma conta? <strong>Cadastre-se</strong>

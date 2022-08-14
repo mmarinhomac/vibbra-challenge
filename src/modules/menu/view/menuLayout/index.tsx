@@ -8,7 +8,7 @@ interface IMenuLayout {
   children: React.ReactNode
 }
 
-export default function MenuLayout({ children } : IMenuLayout) {
+export default function MenuLayout({ children }: IMenuLayout) {
   return (
     <MenuProvider>
       <>
