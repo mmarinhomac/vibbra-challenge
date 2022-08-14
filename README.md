@@ -7,15 +7,14 @@ Desenvolver um app para empreendedores formalizados como Microempreendedores Ind
 <br>
 
 ## Escopo
-No total são 6 criações 
-
-<br>
 
 - Tela de Autenticação / Cadastro
 - Tela de Dashboard de Dados
   - Com opção de criar nota fiscal
   - Com opção de criar despesa
 - Tela de Preferências
+  - Com opção de alterar limite faturamento anual
+  - Com opção de alterar notificações
   - Com opção de criar empresa
   - Com opção de criar categorias de despesas
 - Tela de Histórico
@@ -49,7 +48,7 @@ srvibbraneo@gmail.com<br>
 
 **\#1 .. Design:**
 
-Criei design simples, limpo e de fácil uso para priorizar outros tópicos devido prazo corrido do teste.
+Criei um design simples, limpo e de fácil uso para priorizar outros tópicos devido ao prazo do teste.
 
 **\#2 .. Mock da API:**
 
@@ -57,17 +56,19 @@ Criei uma API "mockada" com mirageJS com todos os dados de autenticação e neg�
 
 **\#3 .. Arquitetura:**
 
-Criei uma arquitetura com foco em separação de dados de negócio das interfaces, a intenção é deixa um hook customizado que é responsável por buscar dados de negócio, formatar, calcular... e então servir dados ou handles para interface limpa
+Criei uma arquitetura com foco em separar os dados de negócio e lógica das interfaces, a intenção é deixar um hook customizado que é responsável por buscar dados de negócio, formatar, calcular... e então servir os dados ou “handles” para interface limpa.
 
-**module/core** Regras lógicas de comportamento do app
+**common**: Componentes, lógica e utilidades compartilhadas.
 <br>
-**module/hooks/business** Regras de negócios
+**module/core**: Regras lógicas de comportamento do app.
 <br>
-**module/view** Interfaces independentes
+**module/hooks/business**: Regras de negócios.
 <br>
-**module/context** Dados persistidos por módulo
+**module/view**: Interfaces independentes.
 <br>
-**src/store** Dados persistidos globalmente no app
+**module/context**: Dados persistidos por módulo.
+<br>
+**src/store**: Dados persistidos globalmente no app.
 <br>
 
 ## Run Project
