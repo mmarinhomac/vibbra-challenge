@@ -5,7 +5,7 @@ interface IInput {
   type?: string
   placeholder?: string
   onChange: ({ id, value }: { id: string; value: string }) => any
-  initialValue?: string
+  initialValue?: string | null
 }
 
 import { Container } from './styles'

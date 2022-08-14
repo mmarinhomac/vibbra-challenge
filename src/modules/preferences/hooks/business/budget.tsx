@@ -25,7 +25,9 @@ export default function BudgetBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    maximumBillingLimit: String(context.maximumBillingLimit),
+    maximumBillingLimit: context.maximumBillingLimit
+      ? String(context.maximumBillingLimit)
+      : null,
     onSaveMaximumBillingLimit,
   }
 }

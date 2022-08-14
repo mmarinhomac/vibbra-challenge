@@ -25,8 +25,20 @@ export default function PreferencesBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    emailActived: context.notifications.indexOf('email') !== -1,
-    smsActived: context.notifications.indexOf('sms') !== -1,
+    emailActived: () => {
+      if (context.notifications) {
+        return context.notifications.indexOf('email') !== -1
+      }
+
+      return false
+    },
+    smsActived: () => {
+      if (context.notifications) {
+        return context.notifications.indexOf('sms') !== -1
+      }
+
+      return false
+    },
     onChangePreferences,
   }
 }

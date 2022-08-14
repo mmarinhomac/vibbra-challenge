@@ -24,10 +24,10 @@ type IExpense = {
 interface IHistoryContext {
   tabSelected: number
   setTabSelected: React.Dispatch<React.SetStateAction<number>>
-  invoiceList: IInvoice[]
-  setInvoiceList: React.Dispatch<React.SetStateAction<IInvoice[]>>
-  expenseList: IExpense[]
-  setExpenseList: React.Dispatch<React.SetStateAction<IExpense[]>>
+  invoiceList: IInvoice[] | null
+  setInvoiceList: React.Dispatch<React.SetStateAction<IInvoice[] | null>>
+  expenseList: IExpense[] | null
+  setExpenseList: React.Dispatch<React.SetStateAction<IExpense[] | null>>
 }
 
 interface IHistoryProvider {
@@ -37,30 +37,9 @@ interface IHistoryProvider {
 const initialState: IHistoryContext = {
   tabSelected: 0,
   setTabSelected: () => {},
-  invoiceList: [
-    {
-      id: '',
-      companieId: 0,
-      value: 0,
-      invoiceNumber: 0,
-      description: '',
-      createdAt: '',
-      payDay: '',
-    },
-  ],
+  invoiceList: null,
   setInvoiceList: () => {},
-  expenseList: [
-    {
-      id: '',
-      categorieId: 0,
-      categorieName: '',
-      companieId: 0,
-      value: 0,
-      name: '',
-      createdAt: '',
-      dateRefCompetency: '',
-    },
-  ],
+  expenseList: null,
   setExpenseList: () => {},
 }
 

@@ -61,11 +61,17 @@ export default function CompanyBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    companyList: context.companyList.map((item) => ({
-      id: item.id,
-      title: item.name,
-      subTitle: item.companyRegister,
-    })),
+    companyList: () => {
+      if (context.companyList) {
+        return context.companyList.map((item) => ({
+          id: item.id,
+          title: item.name,
+          subTitle: item.companyRegister,
+        }))
+      }
+
+      return null
+    },
     onInvokeNewCompany,
     onInvokeEditCompany,
   }

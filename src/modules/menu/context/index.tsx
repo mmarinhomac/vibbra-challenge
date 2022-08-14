@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from 'react'
 
 interface IMenuContext {
-  helloTitle: string
-  setHelloTitle: React.Dispatch<React.SetStateAction<string>>
+  helloTitle: string | null
+  setHelloTitle: React.Dispatch<React.SetStateAction<string | null>>
   menuSelection: number
   setMenuSelection: React.Dispatch<React.SetStateAction<number>>
 }
@@ -12,7 +12,7 @@ interface IMenuProvider {
 }
 
 const initialState: IMenuContext = {
-  helloTitle: '',
+  helloTitle: null,
   setHelloTitle: () => {},
   menuSelection: 0,
   setMenuSelection: () => {},

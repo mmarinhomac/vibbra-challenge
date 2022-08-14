@@ -48,7 +48,7 @@ function HistoryView() {
       <List
         onEdit={() => {}}
         onDelete={() => {}}
-        data={onSelectDataList(tabSelected, invoiceList, expenseList)}
+        data={onSelectDataList(tabSelected, invoiceList(), expenseList())}
       />
     </Container>
   )

@@ -59,13 +59,13 @@ function PreferencesView() {
           <HStack>
             <Checkbox
               id="emailNotification"
-              initialValue={emailActived}
+              initialValue={emailActived()}
               label="E-mail"
               onChange={() => onChangePreferences('email')}
             />
             <Checkbox
               id="smsNotification"
-              initialValue={smsActived}
+              initialValue={smsActived()}
               label="SMS"
               onChange={() => onChangePreferences('sms')}
             />
@@ -107,7 +107,7 @@ function PreferencesView() {
               onInvokeEditCategory
             )
           }
-          data={onSelectDataList(tabSelected, companyList, categoryList)}
+          data={onSelectDataList(tabSelected, companyList(), categoryList())}
         />
       </RecordsContent>
     </Container>

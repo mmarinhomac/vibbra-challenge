@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { TypeRecord } from '../../../../common/components/List'
+
 import { useHistoryContext } from '../../context'
 
 import { setModal } from '../../../../store/systemSlice'
@@ -70,11 +72,18 @@ export default function InvoiceBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    invoiceList: context.invoiceList.map((item) => ({
-      id: item.id,
-      title: item.description,
-      subTitle: String(item.value),
-    })),
+    invoiceList: () => {
+      if (context.invoiceList) {
+        const data: TypeRecord[] = context.invoiceList.map((item) => ({
+          id: item.id,
+          title: item.description,
+          subTitle: String(item.value),
+        }))
+        return data
+      }
+
+      return null
+    },
     onInvokeNewInvoice,
   }
 }

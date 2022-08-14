@@ -61,11 +61,17 @@ export default function CategoryBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    categoryList: context.categoryList.map((item) => ({
-      id: item.id,
-      title: item.name,
-      subTitle: item.description,
-    })),
+    categoryList: () => {
+      if (context.categoryList) {
+        return context.categoryList.map((item) => ({
+          id: item.id,
+          title: item.name,
+          subTitle: item.description,
+        }))
+      }
+
+      return null
+    },
     onInvokeNewCategory,
     onInvokeEditCategory,
   }

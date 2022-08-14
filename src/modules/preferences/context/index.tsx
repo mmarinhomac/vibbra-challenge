@@ -17,14 +17,14 @@ interface ICategory {
 interface IPreferencesContext {
   tabSelected: number
   setTabSelected: React.Dispatch<React.SetStateAction<number>>
-  maximumBillingLimit: number
-  setMaximumBillingLimit: React.Dispatch<React.SetStateAction<number>>
-  notifications: string[]
-  setNotifications: React.Dispatch<React.SetStateAction<string[]>>
-  companyList: ICompany[]
-  setCompanyList: React.Dispatch<React.SetStateAction<ICompany[]>>
-  categoryList: ICategory[]
-  setCategoryList: React.Dispatch<React.SetStateAction<ICategory[]>>
+  maximumBillingLimit: number | null
+  setMaximumBillingLimit: React.Dispatch<React.SetStateAction<number | null>>
+  notifications: string[] | null
+  setNotifications: React.Dispatch<React.SetStateAction<string[] | null>>
+  companyList: ICompany[] | null
+  setCompanyList: React.Dispatch<React.SetStateAction<ICompany[] | null>>
+  categoryList: ICategory[] | null
+  setCategoryList: React.Dispatch<React.SetStateAction<ICategory[] | null>>
 }
 
 interface IPreferencesProvider {
@@ -34,27 +34,13 @@ interface IPreferencesProvider {
 const initialState: IPreferencesContext = {
   tabSelected: 0,
   setTabSelected: () => {},
-  maximumBillingLimit: 0,
+  maximumBillingLimit: null,
   setMaximumBillingLimit: () => {},
-  notifications: [''],
+  notifications: null,
   setNotifications: () => {},
-  companyList: [
-    {
-      id: '1',
-      companyRegister: '',
-      name: '',
-      socialReason: '',
-    },
-  ],
+  companyList: null,
   setCompanyList: () => {},
-  categoryList: [
-    {
-      id: '1',
-      name: '',
-      description: '',
-      filed: false,
-    },
-  ],
+  categoryList: null,
   setCategoryList: () => {},
 }
 

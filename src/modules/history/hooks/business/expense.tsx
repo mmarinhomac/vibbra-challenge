@@ -70,11 +70,17 @@ export default function ExpenseBusiness() {
   useEffect(() => setInitialRender(false), [])
 
   return {
-    expenseList: context.expenseList.map((item) => ({
-      id: item.id,
-      title: item.name,
-      subTitle: String(item.value),
-    })),
+    expenseList: () => {
+      if (context.expenseList) {
+        return context.expenseList.map((item) => ({
+          id: item.id,
+          title: item.name,
+          subTitle: String(item.value),
+        }))
+      }
+
+      return null
+    },
     onInvokeNewExpense,
   }
 }

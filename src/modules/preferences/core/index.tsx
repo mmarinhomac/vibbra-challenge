@@ -18,8 +18,8 @@ export default function PreferencesCore() {
 
   const onSelectDataList = (
     tab: number,
-    dataOne: TypeRecord[],
-    dataTwo: TypeRecord[]
+    dataOne: TypeRecord[] | null,
+    dataTwo: TypeRecord[] | null
   ) => {
     if (tab === 0) return dataOne
     return dataTwo

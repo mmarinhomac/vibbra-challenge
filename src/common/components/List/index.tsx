@@ -8,7 +8,7 @@ export type TypeRecord = {
 }
 
 interface IList {
-  data: TypeRecord[] | null | undefined
+  data: TypeRecord[] | null
   onEdit?: ({ id }: { id: string }) => any
   onDelete?: ({ id }: { id: string }) => any
 }

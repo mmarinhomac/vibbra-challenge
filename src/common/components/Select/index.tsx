@@ -5,7 +5,7 @@ import { GoChevronDown } from '@react-icons/all-files/go/GoChevronDown'
 interface ISelect {
   id: string
   label: string
-  options: string[]
+  options: string[] | null
   onChange: ({ id, value }: { id: string; value: string }) => any
 }
 
@@ -18,6 +18,8 @@ export default function Select({ id, label, options, onChange }: ISelect) {
     setActived(false)
     onChange({ id, value: option })
   }
+
+  if (!options) return <></>
 
   return (
     <Container>
